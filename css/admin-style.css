@@ -1,0 +1,252 @@
+/* post type icons
+----------------------------------------------------------------------*/
+#adminmenu #toplevel_page_wpbasis_dashboard div.wp-menu-image::before {
+	content: "\f226";
+}
+#adminmenu #toplevel_page_wpbasis_site_options div.wp-menu-image::before {
+	content: "\f108";
+}
+
+/* layout styles for pxlcore
+----------------------------------------------- */
+.col {
+	float: left;
+}
+.col-half {
+	width: 48%;
+	margin-right: 4%;
+}
+
+/* pxlcore dashboard styles
+----------------------------------------------- */
+body.toplevel_page_wpbasis_dashboard .welcome-panel {
+	padding-bottom: 23px;
+}
+.welcome-panel-content {
+	margin-bottom: 15px;
+}
+.welcome-panel .wpbasis-dashboard-content {
+	margin-left: 15px;
+}
+.wpbasis-dashboard-content .col {
+	float: left;
+	display: inline;
+	margin-right: 4%;
+}
+.wpbasis-dashboard-content .half-col {
+	width: 48%;
+}
+.wpbasis-dashboard-content .third-col {
+	width: 30.66666666666667%;
+}
+.wpbasis-dashboard-content .last-col {
+	margin-right: 0;
+}
+h4.wpbasis-col-title {
+	text-shadow: 1px 1px 1px #fff;
+	margin: 0;
+	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+	font-size: 21px;
+	font-weight: normal;
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+.services h4.wpbasis-col-title {
+	text-align: center;
+}
+.services .col {
+	margin-bottom: 12px;
+}
+.wpbasis-dashboard-content p {
+	font-size: 14px;
+	line-height: 1.4;
+	margin-top: 0px;
+}
+.icon img {
+	margin: 0 auto;
+	display: block;
+	margin-bottom: 12px;
+}
+
+/* new */
+.about-wrap .wpbasis-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.wpbasis-badge {
+	background-color: #F2F2F2;
+	color: #78c8e6;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+	box-shadow: 0 1px 3px rgba(0,0,0,.2);
+	font-size: 14px;
+	text-align: center;
+	font-weight: 600;
+	margin: 5px 0 0;
+	display: inline-block;
+	width: 100px;
+	text-rendering: optimizeLegibility;
+	padding: 10px;
+}
+.wpbasis-badge img {
+	margin-bottom: 5px;
+}
+ul.wpbasis-members {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+ul.wpbasis-members li.wpbasis-member img {
+	border-radius: 100px;
+	height: auto;
+}
+ul.wpbasis-members li.wpbasis-member {
+	float: left;
+	width: 30%;
+	margin-right: 3.333333333%;
+	margin-bottom: 3.333333333%;
+}
+h4.wpbasis-member-name {
+	margin-top: 6%;
+	margin-bottom: 0;
+	text-align: center;
+}
+ul.wpbasis-important-info-list li {
+	margin-bottom: 5%;
+}
+span.value {
+	padding: 1% 2%;
+	width: 50%;
+	margin-left: 3%;
+	background-color: #FFFFFF;
+	display: inline-block;
+}
+span.label {
+	width: 40%;
+	display: inline-block;
+}
+ul.wpbasis-important-info-list li.red span.value {
+	background-color: #db4d4d;
+	color: #FFFFFF;
+}
+
+h5.wpbasis-content-title {
+	font-size: 1em;
+}
+
+/* pxlcore setting styles
+----------------------------------------------- */
+.wpbasis-setting th label::before {
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: top;
+	margin-right: 5px;
+}
+.wpbasis-setting-twitter th label::before {
+	content: "\f301";
+	color: #4099FF;
+}
+.wpbasis-setting-facebook th label::before {
+	content: "\f304";
+	color: #3B5998;
+}
+.wpbasis-setting-linkedin th label::before {
+	content: "\f103";
+}
+.wpbasis-setting-email th label::before {
+	content: "\f466";
+}
+.wpbasis-setting-telno th label::before {
+	content: "\f470";
+}
+.wpbasis-setting-footer_text th label::before {
+	content: "\f464";
+}
+
+/* pxlcore tabs styles
+----------------------------------------------- */
+ul.wpbasis-tabs {
+	border-bottom-color: #ccc;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	padding-bottom: 0;
+	font-size: 23px;
+	font-weight: 400;
+	line-height: 29px;
+	padding-left:6px;
+	margin-bottom: 0;
+}
+ul.wpbasis-tabs li {
+	display: inline-block;
+	margin: 0 3px -1px 0;
+}
+ul.wpbasis-tabs li a {
+	padding: 4px 15px 6px;
+	font-size: 18px;
+	vertical-align: top;
+	border-width: 1px;
+	color: #555;
+	border-color: #ccc;
+	text-decoration: none;
+	display: block;
+	border-style: solid;
+	background: #e4e4e4;
+	font-weight: bold;
+
+}
+ul.wpbasis-tabs li a.active {
+	color: #000;
+	border-bottom-color: #F1F1F1;
+	background-color: #F1F1F1;
+}
+
+h3.wpbasis-service-type-title {
+	margin-bottom: 4%;
+	padding: 4%;
+	border-top: 1px solid #A3D8EA;
+	border-bottom: 1px solid #A3D8EA;
+	text-align: center;
+	font-weight: 300;
+	font-size: 1.8em;
+	text-transform: uppercase;
+	margin-top: 0;
+}
+.about-wrap img.service-icon {
+	margin: 0 auto;
+	margin-bottom: 2%;
+	display: block;
+}
+h4.wpbasis-service-title {
+	text-align: center;
+	font-weight: normal;
+}
+
+/* general styles
+----------------------------------------------- */
+.clearfix {
+	clear: both;
+}
+.col-last {
+	margin-right: 0;
+}
+
+@media screen and (max-width: 782px) {
+
+	ul.wpbasis-members li.wpbasis-member {
+		float: left;
+		width: 48%;
+		margin-right: 2%;
+		margin-bottom: 2%;
+	}
+
+}
+
+@media screen and (max-width: 440px) {
+
+	ul.wpbasis-members li.wpbasis-member {
+		float: none;
+		width: 100%;
+	}
+
+}
