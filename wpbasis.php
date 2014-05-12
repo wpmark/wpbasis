@@ -11,6 +11,10 @@ Version: 0.1
 /* define variable for path to this plugin file. */
 define( WPBASIS_LOCATION, dirname( __FILE__ ) );
 
+/* make the plugin updatable without being in the WordPress plugin repo */
+require_once( 'wp-updates-plugin.php' );
+new WPUpdatesPluginUpdater_485( 'http://wp-updates.com/api/2/plugin', plugin_basename( __FILE__ ) );
+
 /***************************************************************
 * include the necessary functions file for the plugin
 ***************************************************************/
