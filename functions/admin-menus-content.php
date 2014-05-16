@@ -31,6 +31,13 @@ function wpbasis_plugin_settings_content() {
 	<div class="wrap">
 		
 		<h2>WP Basis Settings</h2>
+		
+		<?php
+		
+			/* do before settings page action */
+			do_action( 'wpbasis_before_settings_options' );
+		
+		?>
 				
 		<form method="post" action="options.php">
 		
@@ -49,14 +56,14 @@ function wpbasis_plugin_settings_content() {
 								'wpbasis_domain_name' => array(
 									'setting_name' => 'wpbasis_domain_name',
 									'setting_label' => 'Domain Name',
-									'setting_description' => 'Enter a domain name to be used for WP Basis Super Users only.',
+									'setting_description' => 'Enter a domain name to be used. This domain name is used for links in the WordPress admin e.g. the footer credit link and also to check against when assigned a WP Basis user. If the users email domain does not match here, they cannot be a WP Basis user.',
 									'setting_type' => 'text',
 									'setting_class' => 'domain-name',
 								),
 								'wpbasis_organisation_name' => array(
 									'setting_name' => 'wpbasis_organisation_name',
 									'setting_label' => 'Orgnisation Name',
-									'setting_description' => 'Enter the name of the orgnisation.',
+									'setting_description' => 'Enter the name of the orgnisation. This name is displayed in the WordPress admin as the site developer.',
 									'setting_type' => 'text',
 									'setting_class' => 'organisation-name',
 								),
@@ -155,9 +162,6 @@ function wpbasis_plugin_settings_content() {
 
 						}
 
-						/* do before settings page action */
-						do_action( 'wpbasis_after_site_options' );
-
 					?>
 				
 				</tbody>
@@ -169,8 +173,37 @@ function wpbasis_plugin_settings_content() {
 			</p>
 			
 	<?php
+	
+	/* do after settings page action */
+	do_action( 'wpbasis_after_settings_options' );
 
 }
+
+/***************************************************************
+* Function wpbasis_site_options_content()
+* Creates the output markup for the added site options page
+***************************************************************/
+function wpbasis_settings_page_intro() {
+	
+	?>
+	
+	<div class="welcome-panel wpbasis_settings_intro">
+		
+		<h3 class="wpbasis-welcome-heading">Welcome to WP Basis</h3>
+		
+		<p>To get you started you need to update some settings below. With WP Basis there are two types of user. The first is a normal WordPress user and the second is a WP Basis user. The plugins functionality is activated for normal WordPress users. Therefore any users you want to have a normal WordPress experience without any of the admin customisations, should be made a WP Basis user. This can be done on the users profile pages.</p>
+		
+		<a class="button button-primary button-hero" href="<?php echo admin_url( 'users.php' ); ?>">View Users</a>
+		
+		<p>or, <a href="<?php echo admin_url( 'users.php' ); ?>">edit your profile here</a></p>
+		
+	</div>
+	
+	<?php
+	
+}
+
+add_action( 'wpbasis_before_settings_options', 'wpbasis_settings_page_intro', 10 );
 
 /***************************************************************
 * Function wpbasis_site_options_content()
