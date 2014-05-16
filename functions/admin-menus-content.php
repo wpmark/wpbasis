@@ -13,8 +13,92 @@ function wpbasis_dashboard() {
 
 	} else {
 	
-		/* load plugin dashboard content file */
-		require_once WPBASIS_LOCATION . '/inc/dashboard-content.php';
+		global $wp_version; ?>
+		<div class="wrap about-wrap wpbasis-dashboard-wrap">
+			
+			<h1><?php bloginfo( 'name' ); ?><br />Dashboard</h1>
+	
+			<div class="about-text">
+				<?php echo apply_filters( 'wpbasis_welcome_text', 'Welcome to your website, designed & developed by ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?>
+			</div>
+			
+			<div class="wpbasis-badge">
+				<a href="http://<?php echo esc_url( get_option( 'wpbasis_domain_name' ) ); ?>">
+					<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
+				</a>
+				<?php printf( __( 'Version %s' ), $wp_version ); ?>
+			</div>
+			
+			<div class="wpbasis-tabs-wrapper">
+			
+				<ul class="wpbasis-tabs">
+				
+					<?php
+		
+						/***************************************************************
+						* set an array of tab titles and ids
+						* the id set here should match the id given to the content wrapper
+						* which has the class wpbasis-tab-content included in the callback
+						* function
+						***************************************************************/
+						$wpbasis_dashboard_tabs = apply_filters(
+							'wpbasis_dashboard_tabs',
+							array(
+								'welcome' => array(
+									'id' => '#wpbasis-welcome',
+									'label' => 'Welcome',
+								),
+							)
+						);
+		
+						/* check we have items to show */
+						if( ! empty( $wpbasis_dashboard_tabs ) ) {
+		
+							/* loop through each item */
+							foreach( $wpbasis_dashboard_tabs as $wpbasis_dashboard_tab ) {
+		
+								?>
+								<li><a href="<?php echo esc_attr( $wpbasis_dashboard_tab[ 'id' ] ); ?>"><?php echo esc_html( $wpbasis_dashboard_tab[ 'label' ] ); ?></a></li>
+								<?php
+		
+							}
+		
+						}
+		
+					?>
+					
+				</ul>
+			
+				<?php
+	
+					/* set an array of tab content blocks */
+					$wpbasis_dashboard_tabs_contents = apply_filters(
+						'wpbasis_dashboard_tabs_contents',
+						array(
+							'welcome' => array(
+								'callback' => 'wpbasis_dashboard_welcome_tab',
+							),
+						)
+					);
+		
+					/* check we have items to show */
+					if( ! empty( $wpbasis_dashboard_tabs_contents ) ) {
+		
+						/* loop through each item */
+						foreach( $wpbasis_dashboard_tabs_contents as $wpbasis_dashboard_tabs_content ) {
+		
+							/* run the callback function for showing the content */
+							$wpbasis_dashboard_tabs_content[ 'callback' ]();
+		
+						}
+		
+					}
+		
+				?>
+		
+			</div><!-- // wpbasis-tabs-wrapper -->
+		</div>
+		<?php	
 
 	}
 
@@ -183,32 +267,6 @@ function wpbasis_plugin_settings_content() {
 * Function wpbasis_site_options_content()
 * Creates the output markup for the added site options page
 ***************************************************************/
-function wpbasis_settings_page_intro() {
-	
-	?>
-	
-	<div class="welcome-panel wpbasis_settings_intro">
-		
-		<h3 class="wpbasis-welcome-heading">Welcome to WP Basis</h3>
-		
-		<p>To get you started you need to update some settings below. With WP Basis there are two types of user. The first is a normal WordPress user and the second is a WP Basis user. The plugins functionality is activated for normal WordPress users. Therefore any users you want to have a normal WordPress experience without any of the admin customisations, should be made a WP Basis user. This can be done on the users profile pages.</p>
-		
-		<a class="button button-primary button-hero" href="<?php echo admin_url( 'users.php' ); ?>">View Users</a>
-		
-		<p>or, <a href="<?php echo admin_url( 'users.php' ); ?>">edit your profile here</a></p>
-		
-	</div>
-	
-	<?php
-	
-}
-
-add_action( 'wpbasis_before_settings_options', 'wpbasis_settings_page_intro', 10 );
-
-/***************************************************************
-* Function wpbasis_site_options_content()
-* Creates the output markup for the added site options page
-***************************************************************/
 function wpbasis_site_options_content() {
 
 	?>
@@ -219,11 +277,8 @@ function wpbasis_site_options_content() {
 		
 		<?php
 
-			/* output filterable intro text */
-			echo apply_filters( 'wpbasis_site_option_intro', '<p>Below you can set some basic options for your site. Some of these options are used to display content on the front end, for example your telephone number may appear depending on your design.</p>' );
-
-			/* do before settings page action */
-			do_action( 'wpbasis_after_site_options_form' );
+			/* do before options page action */
+			do_action( 'wpbasis_before_site_options_form' );
 
 		?>
 		

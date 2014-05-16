@@ -26,6 +26,7 @@ require_once dirname( __FILE__ ) . '/functions/dashboard-tabs-content.php';
 require_once dirname( __FILE__ ) . '/functions/post-type-descriptions.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
+require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 
 /* check whether the metabox class already exists */
 if( ! class_exists( 'CMB_Meta_Box' ) ) {
