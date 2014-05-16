@@ -197,7 +197,7 @@ add_filter( 'admin_footer_text', 'wpbasis_admin_footer_text' );
 function wpbasis_change_login_landing( $redirect_to, $request_redirect_to, $user ) {
 
 	/* if the current user is not a wpbasis super user */
-	if( ! wpbasis_is_wpbasis_user() ) {
+	if( ! wpbasis_is_wpbasis_user( $user->ID ) ) {
 
 		/* return the url of our new dashboard page */
 		return apply_filters( 'wpbasis_login_redirect', admin_url( 'admin.php?page=wpbasis_dashboard' ) );
