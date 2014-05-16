@@ -36,6 +36,46 @@ if( ! class_exists( 'CMB_Meta_Box' ) ) {
 }
 
 /***************************************************************
+* Function wpbasis_on_activation()
+* On plugin activation makes current user a wpbasis user and
+* sets an option to redirect the user to another page.
+***************************************************************/
+function wpbasis_on_activation() {
+	
+	/* get the current users, user ID */
+	$wpbasis_user_id = get_current_user_id();
+	
+	/* make the user a wpbasis super user */
+	update_usermeta( $wpbasis_user_id, 'wpbasis_user', 1 );
+	
+	/* set option to initialise the redirect */
+	add_option( 'wpbasis_activation_redirect', true );
+	
+}
+
+register_activation_hook( __FILE__, 'wpbasis_on_activation' );
+
+/***************************************************************
+* Function wp_basis_activation_redirect()
+* Redirects user to the settings page for wp basis on plugin
+* activation.
+***************************************************************/
+function wp_basis_activation_redirect() {
+	
+	if( true == get_option( 'wpbasis_activation_redirect' ) ) {
+		
+		delete_option( 'wpbasis_activation_redirect' );
+		
+		wp_redirect( admin_url( 'admin.php?page=wpbasis_settings' ) );
+		exit;
+		
+	}
+	
+}
+
+add_action( 'admin_init', 'wp_basis_activation_redirect' );
+
+/***************************************************************
 * Function wpbasis_enqueue_scripts()
 * Adds plugins scripts and styles
 ***************************************************************/
