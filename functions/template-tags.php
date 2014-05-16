@@ -3,10 +3,14 @@
 * Function wpbasis_is_wpbasis_user()
 * Checks to see if the current user is a wpbasis super user
 ***************************************************************/
-function wpbasis_is_wpbasis_user() {
+function wpbasis_is_wpbasis_user( $user_id = '' ) {
 	
+	/* if no user is passed, default to the current users id */
+	if( empty( $user_id ) )
+		$user_id = get_current_user_id();
+		
 	/* if the current user is a pixel team member */
-	if( get_user_meta( get_current_user_id(), 'wpbasis_user', true ) == '1' ) {
+	if( get_user_meta( $user_id, 'wpbasis_user', true ) == '1' ) {
 	
 		return true;
 	
