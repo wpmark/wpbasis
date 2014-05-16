@@ -27,6 +27,14 @@ require_once dirname( __FILE__ ) . '/functions/post-type-descriptions.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
 
+/* check whether the metabox class already exists */
+if( ! class_exists( 'CMB_Meta_Box' ) ) {
+
+	/* load metaboxes if not already loaded */
+	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
+
+}
+
 /***************************************************************
 * Function wpbasis_enqueue_scripts()
 * Adds plugins scripts and styles

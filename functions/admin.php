@@ -64,18 +64,29 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 	
 	/* get the email domain option */
 	$wpbasis_email_domain = get_option( 'wpbasis_domain_name' );
-
-	/* get the email domain is a pixel one */
-	if( $wpbasis_email_domain == $wpbasis_email_parts[1] ) {
-
-		/* update the user meta with the additional fields on the profile page */
-		update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );
 	
-	/* the email domain does not match the users email domain */
+	/* check we have an email domain added */
+	if( ! empty( $wpbasis_email_domain ) ) {
+		
+		/* get the email domain is a pixel one */
+		if( $wpbasis_email_domain == $wpbasis_email_parts[1] ) {
+
+			/* update the user meta with the additional fields on the profile page */
+			update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );
+		
+		/* the email domain does not match the users email domain */
+		} else {
+			
+			/* remove the wpbasis super user meta */
+			update_usermeta( $user_id, 'wpbasis_user', '0' );
+			
+		}
+		
+	/* no email domain added */	
 	} else {
 		
-		/* remove the wpbasis super user meta */
-		update_usermeta( $user_id, 'wpbasis_user', '0' );
+		/* update the user meta with the additional fields on the profile page */
+		update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );
 		
 	}
 
