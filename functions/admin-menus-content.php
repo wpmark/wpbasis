@@ -10,24 +10,23 @@ function wpbasis_dashboard() {
 
 		/* load the dashboard content file from the theme folder */
 		get_template_part( 'wpbasis/dashboard', 'content' );
-
+		
+	/* lets output the content of the dashboard */
 	} else {
 	
-		global $wp_version; ?>
+		?>
 		<div class="wrap about-wrap wpbasis-dashboard-wrap">
 			
 			<h1><?php bloginfo( 'name' ); ?><br />Dashboard</h1>
 	
-			<div class="about-text">
-				<?php echo apply_filters( 'wpbasis_welcome_text', 'Welcome to your website, designed & developed by ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?>
-			</div>
+			<?php
+				
+				/***************************************************************
+				* @hooked wpbasis_dashboard_about_text
+				***************************************************************/
+				do_action( 'wpbasis_dashboard_about_text' );
 			
-			<div class="wpbasis-badge">
-				<a href="http://<?php echo esc_url( get_option( 'wpbasis_domain_name' ) ); ?>">
-					<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
-				</a>
-				<?php printf( __( 'Version %s' ), $wp_version ); ?>
-			</div>
+			?>
 			
 			<div class="wpbasis-tabs-wrapper">
 			
@@ -118,7 +117,9 @@ function wpbasis_plugin_settings_content() {
 		
 		<?php
 		
-			/* do before settings page action */
+			/***************************************************************
+			* @hooked wpbasis_before_settings_options
+			***************************************************************/
 			do_action( 'wpbasis_before_settings_options' );
 		
 		?>
@@ -258,7 +259,9 @@ function wpbasis_plugin_settings_content() {
 			
 	<?php
 	
-	/* do after settings page action */
+	/***************************************************************
+	* @hooked wpbasis_after_settings_options
+	***************************************************************/
 	do_action( 'wpbasis_after_settings_options' );
 
 }
@@ -277,7 +280,9 @@ function wpbasis_site_options_content() {
 		
 		<?php
 
-			/* do before options page action */
+			/***************************************************************
+			* @hooked wpbasis_before_site_options_form
+			***************************************************************/
 			do_action( 'wpbasis_before_site_options_form' );
 
 		?>
@@ -435,9 +440,6 @@ function wpbasis_site_options_content() {
 
 						}
 
-						/* do before settings page action */
-						do_action( 'wpbasis_after_site_options' );
-
 					?>
 				</tbody>
 				
@@ -451,7 +453,9 @@ function wpbasis_site_options_content() {
 		
 		<?php
 
-		/* do after settings page action */
+		/***************************************************************
+		* @hooked wpbasis_after_site_options_form
+		***************************************************************/
 		do_action( 'wpbasis_after_site_options_form' );
 
 		?>

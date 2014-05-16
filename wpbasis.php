@@ -22,7 +22,6 @@ require_once dirname( __FILE__ ) . '/functions/template-tags.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus-content.php';
 require_once dirname( __FILE__ ) . '/functions/admin.php';
-require_once dirname( __FILE__ ) . '/functions/dashboard-tabs-content.php';
 require_once dirname( __FILE__ ) . '/functions/post-type-descriptions.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
@@ -63,10 +62,13 @@ register_activation_hook( __FILE__, 'wpbasis_on_activation' );
 ***************************************************************/
 function wp_basis_activation_redirect() {
 	
+	/* check whether we should redirect the user or not based on the option set on activation */
 	if( true == get_option( 'wpbasis_activation_redirect' ) ) {
 		
+		/* delete the redirect option */
 		delete_option( 'wpbasis_activation_redirect' );
 		
+		/* redirect the user to the wp basis settings page */
 		wp_redirect( admin_url( 'admin.php?page=wpbasis_settings' ) );
 		exit;
 		

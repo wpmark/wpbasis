@@ -4,9 +4,9 @@
 * Content for the welcome tab dashboard home
 * @hooked wpbasis_dashboard_welcome_tab
 ***************************************************************/
-if( ! function_exists( 'wpbasis_dashboard_welcome_tab_content' ) ) { // make function pluaggable
+if( ! function_exists( 'wpbasis_dashboard_welcome_tab' ) ) { // make function pluaggable
 	
-	function wpbasis_dashboard_welcome_tab_content() {
+	function wpbasis_dashboard_welcome_tab() {
 	
 		?>
 		
@@ -97,3 +97,30 @@ function wpbasis_settings_page_intro() {
 }
 
 add_action( 'wpbasis_before_settings_options', 'wpbasis_settings_page_intro', 10 );
+
+/***************************************************************
+* Function wpbasis_dashboard_about_text()
+* Outputs the about text on the wp basis dashboard above the
+* dashboard tabs.
+***************************************************************/
+function wpbasis_dashboard_about_text() {
+	
+	global $wp_version; 
+	?>
+	
+	<div class="about-text">
+		<?php echo apply_filters( 'wpbasis_welcome_text', 'Welcome to your website, designed & developed by ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?>
+	</div>
+	
+	<div class="wpbasis-badge">
+		<a href="http://<?php echo esc_url( get_option( 'wpbasis_domain_name' ) ); ?>">
+			<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
+		</a>
+		<?php printf( __( 'Version %s' ), $wp_version ); ?>
+	</div>
+	
+	<?php
+	
+}
+
+add_action( 'wpbasis_dashboard_about_text', 'wpbasis_dashboard_about_text', 10 );
