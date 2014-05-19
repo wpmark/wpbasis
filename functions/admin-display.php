@@ -21,22 +21,11 @@ if( ! function_exists( 'wpbasis_dashboard_welcome_tab' ) ) { // make function pl
 	
 			?>
 				
-			<div class="col col-half wpbasis-welcome-text">
-				<h3><?php echo apply_filters( 'wpbasis_thanks_heading', 'Thank you for choosing ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?></h3>
-				<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo get_option( 'wpbasis_organisation_name' ); ?> to build your website; we appreciate your business and have enjoyed working with you.</p>
-				
-				<h4 class="wpbasis-important-info">Important Information</h4>
-							
-			</div>
+			<h3><?php echo apply_filters( 'wpbasis_thanks_heading', 'Thank you for choosing ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?></h3>
+			<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo get_option( 'wpbasis_organisation_name' ); ?> to build your website; we appreciate your business and have enjoyed working with you.</p>
 			
-			<div class="col col-half col-last wpbasis-welcome-members">
-			
-				<h3>Help & Support</h3>
-			
-			</div>
-			
-			<div class="clearfix"></div>
-			
+			<p class="get-started">To get started with your site, use the links on the left to add and edit content and change your sites settings.</p>
+										
 			<?php
 	
 				/***************************************************************
