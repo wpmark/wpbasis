@@ -21,8 +21,8 @@ if( ! function_exists( 'wpbasis_dashboard_welcome_tab' ) ) { // make function pl
 	
 			?>
 				
-			<h3><?php echo apply_filters( 'wpbasis_thanks_heading', 'Thank you for choosing ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?></h3>
-			<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo get_option( 'wpbasis_organisation_name' ); ?> to build your website; we appreciate your business and have enjoyed working with you.</p>
+			<h3><?php echo apply_filters( 'wpbasis_thanks_heading', 'Thank you for choosing ' . wpbasis_get_orgnisation_name() . '.' ); ?></h3>
+			<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo wpbasis_get_orgnisation_name(); ?> to build your website; we appreciate your business and have enjoyed working with you.</p>
 			
 			<p class="get-started">To get started with your site, use the links on the left to add and edit content and change your sites settings.</p>
 										
@@ -98,11 +98,11 @@ function wpbasis_dashboard_about_text() {
 	?>
 	
 	<div class="about-text">
-		<?php echo apply_filters( 'wpbasis_welcome_text', 'Welcome to your website, designed & developed by ' . get_option( 'wpbasis_organisation_name' ) . '.' ); ?>
+		<?php echo apply_filters( 'wpbasis_welcome_text', 'Welcome to your website, designed & developed by ' . wpbasis_get_orgnisation_name() . '.' ); ?>
 	</div>
 	
 	<div class="wpbasis-badge">
-		<a href="http://<?php echo esc_url( get_option( 'wpbasis_domain_name' ) ); ?>">
+		<a href="http://<?php echo wpbasis_get_wpbasis_domain_name(); ?>">
 			<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
 		</a>
 		<?php printf( __( 'Version %s' ), $wp_version ); ?>

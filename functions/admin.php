@@ -82,7 +82,7 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 			
 		}
 		
-	/* no email domain added */	
+	/* no email domain added - update anyway*/	
 	} else {
 		
 		/* update the user meta with the additional fields on the profile page */
@@ -172,18 +172,9 @@ add_filter( 'admin_bar_menu', 'wpbasis_howdy', 10, 2 );
 * Change the display text in the wordpress dashboard footer
 ***************************************************************/
 function wpbasis_admin_footer_text () {
-	
-	/* get the orgnisation name from wpbasis settings */
-	$wpbasis_organisation_name = get_option( 'wpbasis_organisation_name' );
-	
-	/* get the orgnisation domain from wpbasis settings */
-	$wpbasis_domain_name = get_option( 'wpbasis_domain_name' );
-	
-	/* the text we want to display in the footer */
-	$wpbasis_admin_footer_text = 'Site created by <a href="http://' . esc_html( $wpbasis_domain_name ) . '">' . esc_html( $wpbasis_organisation_name ) . '</a> using <a href="http://wordpress.org">WordPress</a>';
 
 	/* output this text, running through a filter first */
-	echo apply_filters( 'wpbasis_admin_footer_text', $wpbasis_admin_footer_text );
+	echo apply_filters( 'wpbasis_admin_footer_text', wpbasis_get_admin_footer_text() );
 
 }
 

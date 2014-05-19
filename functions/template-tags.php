@@ -260,3 +260,84 @@ function wpbasis_get_current_url() {
 	return $current_url;
 
 }
+
+/***************************************************************
+* Function wpbasis_get_orgnisation_name()
+* Returns the organisation name set in wp basis option or Wordpress
+* if a name is not set.
+***************************************************************/
+function wpbasis_get_orgnisation_name() {
+	
+	/* get the organisation name from theme options */
+	$wpbasis_org_name = get_option( 'wpbasis_organisation_name' );
+	
+	/* check a name is added */
+	if( ! empty( $wpbasis_org_name ) ) {
+		
+		/* return the name added */
+		return $wpbasis_org_name;
+		
+	/* no name added */
+	} else {
+		
+		/* return wordpress as the org name */
+		return 'WordPress';
+		
+	}
+	
+}
+
+/***************************************************************
+* Function wpbasis_get_wpbasis_domain_name()
+* Returns the organisation domain name set in wp basis option or
+* Wordpress.org if a domain name is not set.
+***************************************************************/
+function wpbasis_get_wpbasis_domain_name() {
+	
+	/* get the organisation name from theme options */
+	$wpbasis_domain_name = get_option( 'wpbasis_domain_name' );
+	
+	/* check a name is added */
+	if( ! empty( $wpbasis_domain_name ) ) {
+		
+		/* return the name added */
+		return $wpbasis_domain_name;
+		
+	/* no name added */
+	} else {
+		
+		/* return wordpress as the org name */
+		return 'wordpress.org';
+		
+	}
+	
+} 
+
+/***************************************************************
+* Function wpbasis_get_admin_footer_text()
+* Returns a custom admin footer text if name and domain are added
+* in the wpbasis settings page. Returns normal wordpress admin
+* footer text is either one is missing.
+***************************************************************/
+function wpbasis_get_admin_footer_text() {
+	
+	/* get the orgnisation name from wpbasis settings */
+	$wpbasis_organisation_name = get_option( 'wpbasis_organisation_name' );
+	
+	/* get the orgnisation domain from wpbasis settings */
+	$wpbasis_domain_name = get_option( 'wpbasis_domain_name' );
+	
+	/* check we have a domain name and an organisation name */
+	if( ! empty( $wpbasis_organisation_name ) && ! empty( $wpbasis_domain_name ) ) {
+	
+		return 'Site created by <a href="http://' . esc_url( $wpbasis_domain_name ) . '">' . esc_html( $wpbasis_organisation_name ) . '</a> using <a href="http://wordpress.org">WordPress</a>';
+	
+	/* no domain or organisation names added */
+	} else {
+		
+		/* return the standard footer */
+		return 'Thank you for creating with <a href="http://wordpress.org">WordPress</a>';
+		
+	}
+		
+}
