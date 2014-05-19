@@ -5,15 +5,36 @@ Plugin URI: https://github.com/wpmark/wpbasis
 Description: WP Basis provides the basis of a WordPress site by giving you access to the types of functions you end up writing for all sites. It also gives modifications to the WordPress dashboard which make it easier to work with for your clients.
 Author: Mark Wilkinson
 Author URI: http://markwilkinson.me
-Version: 0.1
+Version: 0.2
 */
 
 /* define variable for path to this plugin file. */
 define( WPBASIS_LOCATION, dirname( __FILE__ ) );
 
-/* make the plugin updatable without being in the WordPress plugin repo */
-require_once( 'wp-updates-plugin.php' );
-new WPUpdatesPluginUpdater_485( 'http://wp-updates.com/api/2/plugin', plugin_basename( __FILE__ ) );
+/***************************************************************
+* Function wpbasis_plugin_update_handler()
+* Make auto updatable.
+* Needs external update api plugin active on the site to work.
+***************************************************************/
+function wpbasis_plugin_update_handler( EUAPI_Handler $handler = null, EUAPI_Item_Plugin $item ) {
+
+    if ( 'wpbasis/wpbasis.php' == $item->file ) {
+
+        $handler = new EUAPI_Handler_GitHub( array(
+            'type' => $item->type,
+            'file' => $item->file,
+            'github_url' => 'https://github.com/wpmark/wpbasis',
+            'http' => array(
+            'sslverify' => false,
+            ),
+        ) );
+
+    }
+
+    return $handler;
+
+}
+add_filter( 'euapi_plugin_handler', 'wpbasis_plugin_update_handler', 10, 2 );
 
 /***************************************************************
 * include the necessary functions file for the plugin
