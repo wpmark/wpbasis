@@ -23,11 +23,9 @@ require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
 require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 
-/* check whether the metabox class already exists */
-if( ! class_exists( 'CMB_Meta_Box' ) ) {
-	/* load metaboxes if not already loaded */
+/* load metaboxes if not already loaded */
+if( ! class_exists( 'CMB_Meta_Box' ) )
 	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
-}
 
 /***************************************************************
 * Function wpbasis_on_activation()
