@@ -29,3 +29,11 @@ None so far!
 == Screenshots ==
 
 1. The site options screen added to allow users to amend part of their site.
+
+== Changelog ==
+
+= 1.0 =
+* Initial Release
+
+== Upgrade Notice ==
+Update through the WordPress admin as notified.
