@@ -381,7 +381,7 @@ function wpbasis_edit_user_capabilities( $caps ) {
 	/* if the current user is not a wpbasis super user */
 	if( ! wpbasis_is_wpbasis_user() ) {
 		
-		/* setup an array of capabilities to change */
+		/* setup an array of capabilities to change - filterable */
 		$wpbasis_capabilities = apply_filters(
 			'wpbasis_user_capabilities',
 			array(
@@ -410,7 +410,7 @@ function wpbasis_edit_user_capabilities( $caps ) {
 			/* check if the user has the capability */
 			if( ! empty( $caps[ $wpbasis_capability[ 'capability_name' ] ] ) ) {
 			
-				/* action the manage_options capability */
+				/* action the capability - adding or remove accordingly */
 				$caps[ $wpbasis_capability[ 'capability_name' ] ] = $wpbasis_capability[ 'capability_action' ];
 			
 			}
