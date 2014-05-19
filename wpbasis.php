@@ -12,31 +12,6 @@ Version: 0.2
 define( WPBASIS_LOCATION, dirname( __FILE__ ) );
 
 /***************************************************************
-* Function wpbasis_plugin_update_handler()
-* Make auto updatable.
-* Needs external update api plugin active on the site to work.
-***************************************************************/
-function wpbasis_plugin_update_handler( EUAPI_Handler $handler = null, EUAPI_Item_Plugin $item ) {
-
-    if ( 'wpbasis/wpbasis.php' == $item->file ) {
-
-        $handler = new EUAPI_Handler_GitHub( array(
-            'type' => $item->type,
-            'file' => $item->file,
-            'github_url' => 'https://github.com/wpmark/wpbasis',
-            'http' => array(
-            'sslverify' => false,
-            ),
-        ) );
-
-    }
-
-    return $handler;
-
-}
-add_filter( 'euapi_plugin_handler', 'wpbasis_plugin_update_handler', 10, 2 );
-
-/***************************************************************
 * include the necessary functions file for the plugin
 ***************************************************************/
 require_once dirname( __FILE__ ) . '/functions/template-tags.php';
@@ -50,10 +25,8 @@ require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 
 /* check whether the metabox class already exists */
 if( ! class_exists( 'CMB_Meta_Box' ) ) {
-
 	/* load metaboxes if not already loaded */
 	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
-
 }
 
 /***************************************************************
