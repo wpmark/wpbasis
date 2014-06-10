@@ -136,7 +136,7 @@ function wpbasis_plugin_settings_content() {
 
 						/* create empty filterable array for plugins to add own settings */
 						$wpbasis_site_option_settings = apply_filters(
-							'wpbasis_site_option_settings',
+							'wpbasis_plugin_option_settings',
 							array(
 								'wpbasis_domain_name' => array(
 									'setting_name' => 'wpbasis_domain_name',
