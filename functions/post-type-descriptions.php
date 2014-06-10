@@ -125,7 +125,7 @@ add_action( 'init', 'wpbasis_update_description' );
 * Function wpbasis_description()
 * front end function to display the description in the template
 ***************************************************************/
-function wpbasis_description() {
+function wpbasis_post_type_description() {
 
 	/* get the current post type for this archive page */
 	$post_type = get_query_var( 'post_type' );
