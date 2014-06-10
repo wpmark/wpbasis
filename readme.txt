@@ -32,7 +32,11 @@ None so far!
 
 == Changelog ==
 
-= 1.0 =
+= 0.2 =
+* Renamed the post type descriptions front end function as the function name made little sense.
+* Corrected an error where two filters had the same name in the admin area.
+
+= 0.1 =
 * Initial Release
 
 == Upgrade Notice ==
