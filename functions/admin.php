@@ -62,14 +62,17 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 	/* split email at the @ sign */
 	$wpbasis_email_parts = explode( '@', $wpbasis_current_user_email );
 	
+	/* get the domain part of the email */
+	$wpbasis_user_email_domain = $wpbasis_email_parts[1];
+	
 	/* get the email domain option */
-	$wpbasis_email_domain = get_option( 'wpbasis_domain_name' );
+	$wpbasis_email_domain = wpbasis_get_wpbasis_domain_name();
 	
 	/* check we have an email domain added */
 	if( ! empty( $wpbasis_email_domain ) ) {
 		
 		/* get the email domain is a pixel one */
-		if( $wpbasis_email_domain == $wpbasis_email_parts[1] ) {
+		if( in_array( $wpbasis_user_email_domain, $wpbasis_email_domain ) ) {
 
 			/* update the user meta with the additional fields on the profile page */
 			update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );

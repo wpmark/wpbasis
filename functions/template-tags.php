@@ -292,16 +292,18 @@ function wpbasis_get_orgnisation_name() {
 * Returns the organisation domain name set in wp basis option or
 * Wordpress.org if a domain name is not set.
 ***************************************************************/
-function wpbasis_get_wpbasis_domain_name() {
+function wpbasis_get_wpbasis_domain_name( $returntype = '' ) {
 	
 	/* get the organisation name from theme options */
-	$wpbasis_domain_name = get_option( 'wpbasis_domain_name' );
+	$wpbasis_domain_names = get_option( 'wpbasis_domain_name' );
+	
+	/* turn the domain name into an array, using commas as a seperator */
+	$wpbasis_domain_names_array = explode( ',', $wpbasis_domain_names );
 	
 	/* check a name is added */
-	if( ! empty( $wpbasis_domain_name ) ) {
-		
-		/* return the name added */
-		return $wpbasis_domain_name;
+	if( ! empty( $wpbasis_domain_names_array ) ) {
+	
+		return $wpbasis_domain_names_array;
 		
 	/* no name added */
 	} else {
@@ -325,12 +327,12 @@ function wpbasis_get_admin_footer_text() {
 	$wpbasis_organisation_name = get_option( 'wpbasis_organisation_name' );
 	
 	/* get the orgnisation domain from wpbasis settings */
-	$wpbasis_domain_name = get_option( 'wpbasis_domain_name' );
-	
+	$wpbasis_domain_name = wpbasis_get_wpbasis_domain_name();
+
 	/* check we have a domain name and an organisation name */
 	if( ! empty( $wpbasis_organisation_name ) && ! empty( $wpbasis_domain_name ) ) {
 	
-		return 'Site created by <a href="http://' . esc_url( $wpbasis_domain_name ) . '">' . esc_html( $wpbasis_organisation_name ) . '</a> using <a href="http://wordpress.org">WordPress</a>';
+		return 'Site created by <a href="' . esc_url( $wpbasis_domain_name[0] ) . '">' . esc_html( $wpbasis_organisation_name ) . '</a> using <a href="http://wordpress.org">WordPress</a>';
 	
 	/* no domain or organisation names added */
 	} else {
