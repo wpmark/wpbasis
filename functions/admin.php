@@ -109,20 +109,20 @@ function wpbasis_register_settings() {
 	$wpbasis_registered_site_option_settings = apply_filters(
 		'wpbasis_register_site_option_settings',
 		array(
-			'wpbasis_twitter_url',
-			'wpbasis_facebook_url',
-			'wpbasis_linkedin_url',
-			'wpbasis_contact_email',
-			'wpbasis_tel_no',
-			'wpbasis_footer_text',
+			'wpbasis_twitter_url' => 'wpbasis_twitter_url',
+			'wpbasis_facebook_url' => 'wpbasis_facebook_url',
+			'wpbasis_linkedin_url' =>'wpbasis_linkedin_url',
+			'wpbasis_contact_email' => 'wpbasis_contact_email',
+			'wpbasis_tel_no' => 'wpbasis_tel_no',
+			'wpbasis_footer_text' => 'wpbasis_footer_text'
 		)
 	);
 
 	/* loop through each setting to register */
-	foreach( $wpbasis_registered_site_option_settings as $wpbasis_registered_site_option_setting ) {
+	foreach( $wpbasis_registered_site_option_settings as $key => $value ) {
 
 		/* register the setting */
-		register_setting( 'wpbasis_site_options', $wpbasis_registered_site_option_setting );
+		register_setting( 'wpbasis_site_options', $value );
 
 	}
 	

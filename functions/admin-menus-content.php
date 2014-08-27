@@ -322,7 +322,7 @@ function wpbasis_site_options_content() {
 									'setting_type' => 'text',
 									'setting_class' => 'linkedin',
 								),
-								'wpbasis_content_email' => array(
+								'wpbasis_contact_email' => array(
 									'setting_name' => 'wpbasis_contact_email',
 									'setting_label' => 'Contact Email',
 									'setting_description' => 'Enter a contact email here, this may be used on the site for people to get in touch with you.',
