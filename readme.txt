@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 3.9.1
-Stable tag: 0.4
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ None so far!
 1. The site options screen added to allow users to amend part of their site.
 
 == Changelog ==
+
+= 0.5 =
+* Addition of post type images in the post type description screen. Good for use as a banner image for post type archives
 
 = 0.4 =
 * Allow site options to be more easily removed from the site options admin screen

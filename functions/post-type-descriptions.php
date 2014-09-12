@@ -48,7 +48,10 @@ function wpbasis_manage_description() {
 	$post_type = get_post_type_object( $_GET[ 'post_type' ] ); 
 
 	/* if a current description is already added get it */
-	$current_description = stripslashes( get_option( $post_type->name . '-description' ) ); 
+	$current_description = stripslashes( get_option( $post_type->name . '-description' ) );
+	
+	/* get any current image url stored */
+	$current_image_url = stripslashes( get_option( $post_type->name . '-image_url' ) ); 
 
 	?>
 	<h2><?php echo esc_html( $post_type->labels->name ); ?> Description</h2>
@@ -74,6 +77,14 @@ function wpbasis_manage_description() {
 				);
 			?>
 		</div>
+		
+		<div style="width: 95%; margin-top: 20px;">
+		
+			<label for="post_type_image">Image URL</label>
+			<input style="width: 80%;" type="text" name="post_type_image" value="<?php echo esc_attr( $current_image_url ); ?>" />
+			<p class="description">Enter the URL of an image to use for this post types archive page.</p>
+		
+		</div>
 
 		<input type="hidden" name="post_type" value="<?php echo esc_attr( $post_type->name ); ?>" />
 		
@@ -97,9 +108,13 @@ function wpbasis_update_description() {
 		/* get the posted values for post type and description */
 		$post_type = $_POST[ 'post_type' ];
 		$description = $_POST[ 'description' ];
+		$image_url = $_POST[ 'post_type_image' ];
 
 		/* update the option using the new description entered */
 		update_option( $post_type . '-description', $description );
+		
+		/* update the image url */
+		update_option( $post_type . '-image_url', $image_url );
 
 		/* redirect the user to description admin page with added query vars */
 		wp_redirect(
@@ -188,9 +203,9 @@ function wpbasis_get_enabled_post_type_array() {
 * Function wpbasis_description()
 * remove post types from having a description
 ***************************************************************/
-function wpbasis_remove_pages_post_type($post_types) {
+function wpbasis_remove_pages_post_type( $post_types ) {
 
-    unset( $post_types[ 'page' ] );
+    //unset( $post_types[ 'page' ] );
     return $post_types;
     
 }
