@@ -140,16 +140,17 @@ add_action( 'init', 'wpbasis_update_description' );
 * Function wpbasis_description()
 * front end function to display the description in the template
 ***************************************************************/
-function wpbasis_post_type_description() {
-
-	/* get the current post type for this archive page */
-	$post_type = get_query_var( 'post_type' );
-
+function wpbasis_post_type_description( $post_type ) {
+	
+	/* check if the post type is empty */
+	if( empty( $post_type ) )
+		$post_type = get_query_var( 'post_type' );
+	
 	/* get the saved description from the options table */
 	$post_type_description = stripslashes( get_option( $post_type . '-description' ) );
 
 	/* outout the description, running it through the content for wpautop */
-	echo apply_filters( 'the_content', $post_type_description );
+	echo wpautop( $post_type_description ) );
 
 }
 
@@ -205,7 +206,7 @@ function wpbasis_get_enabled_post_type_array() {
 ***************************************************************/
 function wpbasis_remove_pages_post_type( $post_types ) {
 
-    //unset( $post_types[ 'page' ] );
+    unset( $post_types[ 'page' ] );
     return $post_types;
     
 }
