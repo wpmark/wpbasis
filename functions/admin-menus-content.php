@@ -342,7 +342,7 @@ function wpbasis_site_options_content() {
 									'setting_description' => 'Enter text here to display in the footer of your site. You could include a Copyright notice for example.',
 									'setting_type' => 'wysiwyg',
 									'setting_class' => 'footer_text',
-									'media_buttons' => false,
+									'media_buttons' => apply_filters( 'wpbasis_footer_text_media_buttons', false ),
 									'textarea_rows' => 5,
 								),
 							)
