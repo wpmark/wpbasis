@@ -150,7 +150,7 @@ function wpbasis_post_type_description( $post_type ) {
 	$post_type_description = stripslashes( get_option( $post_type . '-description' ) );
 
 	/* outout the description, running it through the content for wpautop */
-	echo wpautop( $post_type_description ) );
+	echo wpautop( $post_type_description );
 
 }
 
