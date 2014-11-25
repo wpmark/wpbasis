@@ -428,3 +428,73 @@ function wpbasis_edit_user_capabilities( $caps ) {
 }
 
 add_filter( 'user_has_cap', 'wpbasis_edit_user_capabilities' );
+
+/***************************************************************
+* Function wpbasis_remove_update_nag()
+* Removes the defauly wordpress update nag when core needs updating.
+***************************************************************/
+function wpbasis_remove_update_nag() {
+	
+	/* remove the update nag */
+	remove_action( 'admin_notices', 'update_nag', 3 );
+	
+}
+
+add_action( 'admin_init', 'wpbasis_remove_update_nag' );
+
+/***************************************************************
+* Function wpbasis_update_nag()
+* Adds an update nag when there is a new core version available.
+* unique nag provided for no wpbasis users.
+***************************************************************/
+function wpbasis_update_nag() {
+	
+	/* if this is a multisite and the user does not have update core capabilities - bail */
+	if ( is_multisite() && !current_user_can('update_core') )
+		return false;
+
+	global $pagenow;
+	
+	/* if we are on the update page in the admin - bail */
+	if ( 'update-core.php' == $pagenow )
+		return;
+	
+	/* get the first update version */
+	$cur = get_preferred_from_update_core();
+	
+	/* if there is not upgrade version of the response is not to upgrade - bail */
+	if ( ! isset( $cur->response ) || $cur->response != 'upgrade' )
+		return false;
+	
+	/* check the current user has update core capabilities */
+	if ( current_user_can('update_core') ) {
+		
+		/* build a message to display */
+		$msg = sprintf( __('<a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> is available! <a href="%2$s">Please update now</a>.'), $cur->current, network_admin_url( 'update-core.php' ) );
+	
+	/* user does not have update core capabilities */
+	} else {
+		
+		/* get the wpbasis domain - as added in settings */
+		$wpbasis_domain = wpbasis_get_wpbasis_domain_name();
+		
+		/* if the wpbasis domain is an array */
+		if( is_array( $wpbasis_domain ) ) {
+			
+			/* get the first element on the array */
+			$wpbasis_domain = $wpbasis_domain[0];
+			
+		}
+		
+		/* build full get in touch url */
+		$wpbasis_update_contact_url = $wpbasis_domain . '/contact/';
+		
+		/* build message to display */
+		$msg = sprintf( __('<a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> is available! Please <a href="' . esc_url( apply_filters( 'wpbasis_update_contact_url', $wpbasis_update_contact_url ) ) . '">get in touch</a> for an update.'), $cur->current );
+	}
+	
+	echo "<div class='update-nag'>$msg</div>";
+	
+}
+
+add_action( 'admin_notices', 'wpbasis_update_nag', 3 );
