@@ -3,8 +3,8 @@ Contributors: wpmarkuk
 Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 0.9
+Tested up to: 4.0.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,10 @@ None so far!
 1. The site options screen added to allow users to amend part of their site.
 
 == Changelog ==
+
+= 1.0 =
+* Remove the default WordPress update nag
+* Add custom update nag with filterable contact URL
 
 = 0.8 =
 * Add filter to turn on media buttons for the footer text in the site options screen
