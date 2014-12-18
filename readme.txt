@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.0.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ None so far!
 1. The site options screen added to allow users to amend part of their site.
 
 == Changelog ==
+
+= 1.1 =
+* Adds a filter to allows developers to easily remove the site options page.
 
 = 1.0 =
 * Remove the default WordPress update nag
