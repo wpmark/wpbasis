@@ -214,9 +214,12 @@ add_filter( 'login_redirect', 'wpbasis_change_login_landing', 100, 3 );
 * falls back to the default
 ***************************************************************/
 function wpbasis_login_logo() {
+	
+	/* set the login logo path - filterable */
+	$logo_path = apply_filters( 'wpbasis_login_logo_path', '/images/login-logo.png' );
 
 	/* check whether a login logo exists in the child theme */
-	if( file_exists( STYLESHEETPATH . '/images/login-logo.png' ) ) {
+	if( file_exists( STYLESHEETPATH . $logo_path ) ) {
 
 		$wpbasis_login_logo_sizes = apply_filters( 'wpbasis_login_logo_sizes',
             array(
@@ -228,7 +231,7 @@ function wpbasis_login_logo() {
 		echo '
 			<style>
 			.login h1 a {
-				background-image: url('.get_stylesheet_directory_uri() . '/images/login-logo.png);
+				background-image: url(' . get_stylesheet_directory_uri() . $logo_path . ');
 				background-size: ' . $wpbasis_login_logo_sizes[ 'width' ] . 'px' . ' ' . $wpbasis_login_logo_sizes[ 'height' ] . 'px;
 				height: ' . $wpbasis_login_logo_sizes[ 'height' ] . 'px;
 				width: ' . $wpbasis_login_logo_sizes[ 'width' ] . 'px;
