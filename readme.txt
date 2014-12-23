@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,12 @@ None so far!
 1. The site options screen added to allow users to amend part of their site.
 
 == Changelog ==
+
+= 1.3 =
+* Remove site options by default - can be turned on with a filter
+* Remove post type descriptions by default - can be turned on with a filter
+* Allow wpbasis_featured_img_url to get url for a specific post
+* Moves code no longer used into an old folder
 
 = 1.2 =
 * adds a filter to allow developers to change the location, within the theme of the login logo.
