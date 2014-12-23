@@ -51,50 +51,6 @@ function wpbasis_add_plugin_settings() {
 add_action( 'admin_menu', 'wpbasis_add_plugin_settings' );
 
 /***************************************************************
-* Function wpbasis_add_site_options()
-* Adds a new menu item for the plugin settings.
-***************************************************************/
-function wpbasis_add_site_options() {
-	
-	/* check whether we should be showing an options page */
-	if( apply_filters( 'wpbasis_show_site_options', false ) ) {
-		
-		/* if the current user is not a wpbasis super user */
-		if( ! wpbasis_is_wpbasis_user() ) {
-	
-			/* add a new menu item linking to our new dashboard page */
-			add_menu_page(
-				'Site Options',
-				'Site Options',
-				'edit_pages',
-				'wpbasis_site_options',
-				'wpbasis_site_options_content',
-				'div',
-				99
-			);
-	
-		/* current user is a pixel team member */
-		} else {
-	
-			/* a site options as sub page of settings */
-			add_submenu_page(
-				'options-general.php',
-				'Site Options',
-				'Site Options',
-				'edit_pages',
-				'wpbasis_site_options',
-				'wpbasis_site_options_content'
-			);
-	
-		}
-		
-	}
-
-}
-
-add_action( 'admin_menu', 'wpbasis_add_site_options' );
-
-/***************************************************************
 * Function wpbasis_remove_admin_menus()
 * Removes admin menus for no pixel junction team members
 ***************************************************************/

@@ -30,6 +30,11 @@ if( ! class_exists( 'CMB_Meta_Box' ) )
 if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
 	require_once dirname( __FILE__ ) . '/old/post-type-descriptions.php';
 
+/* add the site options - filterable */
+if( apply_filters( 'wpbasis_show_site_options', false ) == true )
+	require_once dirname( __FILE__ ) . '/old/site-options.php';
+	
+
 /***************************************************************
 * Function wpbasis_on_activation()
 * On plugin activation makes current user a wpbasis user and
