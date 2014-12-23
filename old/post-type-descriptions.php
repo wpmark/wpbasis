@@ -206,7 +206,7 @@ function wpbasis_get_enabled_post_type_array() {
 ***************************************************************/
 function wpbasis_remove_pages_post_type( $post_types ) {
 
-    unset( $post_types[ 'page' ] );
+    //unset( $post_types[ 'page' ] );
     return $post_types;
     
 }

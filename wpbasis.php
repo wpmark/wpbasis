@@ -18,7 +18,6 @@ require_once dirname( __FILE__ ) . '/functions/template-tags.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus-content.php';
 require_once dirname( __FILE__ ) . '/functions/admin.php';
-require_once dirname( __FILE__ ) . '/functions/post-type-descriptions.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
 require_once dirname( __FILE__ ) . '/functions/admin-display.php';
@@ -26,6 +25,10 @@ require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 /* load metaboxes if not already loaded */
 if( ! class_exists( 'CMB_Meta_Box' ) )
 	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
+	
+/* load post type descriptions - filterable */
+if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
+	require_once dirname( __FILE__ ) . '/old/post-type-descriptions.php';
 
 /***************************************************************
 * Function wpbasis_on_activation()
