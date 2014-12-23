@@ -57,7 +57,7 @@ add_action( 'admin_menu', 'wpbasis_add_plugin_settings' );
 function wpbasis_add_site_options() {
 	
 	/* check whether we should be showing an options page */
-	if( apply_filters( 'wpbasis_show_site_options', true ) ) {
+	if( apply_filters( 'wpbasis_show_site_options', false ) ) {
 		
 		/* if the current user is not a wpbasis super user */
 		if( ! wpbasis_is_wpbasis_user() ) {
