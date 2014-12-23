@@ -26,10 +26,6 @@ To install the plugin:
 
 None so far!
 
-== Screenshots ==
-
-1. The site options screen added to allow users to amend part of their site.
-
 == Changelog ==
 
 = 1.3 =
