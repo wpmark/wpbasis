@@ -116,13 +116,19 @@ function wpbasis_content_nav() {
 * Function wpbasis_featured_img_url()
 * Function to output the featured image url.
 ***************************************************************/
-function wpbasis_featured_img_url( $wpbasis_featured_img_size ) {
+function wpbasis_featured_img_url( $size, $post_id = '' ) {
+	
+	global $post;
+	
+	/* if we have no post id - use current post in loop */
+	if( empty( $post_id ) )
+		$post_id = $post->ID;
 
 	/* get the id of the featured image */
-	$wpbasis_image_id = get_post_thumbnail_id();
+	$wpbasis_image_id = get_post_thumbnail_id( $post_id );
 
 	/* get the image src date for this featuredimage id */
-	$wpbasis_image_url = wp_get_attachment_image_src( $wpbasis_image_id, $wpbasis_featured_img_size );
+	$wpbasis_image_url = wp_get_attachment_image_src( $wpbasis_image_id, $size );
 
 	/* get the first part of the array which is the url */
 	$wpbasis_image_url = $wpbasis_image_url[0];

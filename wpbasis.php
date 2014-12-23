@@ -25,7 +25,11 @@ require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 /* load metaboxes if not already loaded */
 if( ! class_exists( 'CMB_Meta_Box' ) )
 	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
-	
+
+/**
+ * deal with legacy code here
+ */
+
 /* load post type descriptions - filterable */
 if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
 	require_once dirname( __FILE__ ) . '/old/post-type-descriptions.php';
@@ -95,10 +99,7 @@ function wpbasis_enqueue_scripts() {
 	}
 	
 	/* register the stylesheet */
-    wp_register_style( 'wpbasis_admin_css', plugins_url( 'css/admin-style.css', __FILE__ ) );
-    
-    /* enqueue the stylsheet */
-    wp_enqueue_style( 'wpbasis_admin_css' );
+    wp_enqueue_style( 'wpbasis_admin_css', plugins_url( 'css/admin-style.css', __FILE__ ) );
 
 }
 
