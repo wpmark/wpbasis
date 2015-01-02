@@ -22,9 +22,9 @@ require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
 require_once dirname( __FILE__ ) . '/functions/admin-display.php';
 
-/* load metaboxes if not already loaded */
+/* load metaboxes if not already loaded - legacy code */
 if( ! class_exists( 'CMB_Meta_Box' ) )
-	require_once dirname( __FILE__ ) . '/metaboxes/custom-meta-boxes.php';
+	require_once dirname( __FILE__ ) . '/old/metaboxes/custom-meta-boxes.php';
 
 /**
  * deal with legacy code here
