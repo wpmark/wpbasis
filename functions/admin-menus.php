@@ -15,7 +15,7 @@ function wpbasis_add_dashboard_home() {
 			'edit_posts',
 			'wpbasis_dashboard',
 			'wpbasis_dashboard',
-			'div',
+			'dashicons-dashboard',
 			1
 		);
 
@@ -52,7 +52,7 @@ add_action( 'admin_menu', 'wpbasis_add_plugin_settings' );
 
 /***************************************************************
 * Function wpbasis_remove_admin_menus()
-* Removes admin menus for no pixel junction team members
+* Removes admin menus for no wp basis super users
 ***************************************************************/
 function wpbasis_remove_admin_menus() {
 

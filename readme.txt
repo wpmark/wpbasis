@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.3.1
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,11 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.4 =
+* Use SASS for the admin plugins css
+* Combine all admin JS into one file
+* Remove all unused code as a result of ditching some functions into legacy code
 
 = 1.3.1 =
 * Move the meta boxes framework into the old folder. Should not be used in this plugin anymore, instead loaded as a mu-plugin.

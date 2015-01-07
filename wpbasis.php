@@ -5,7 +5,7 @@ Plugin URI: https://github.com/wpmark/wpbasis
 Description: WP Basis provides the basis of a WordPress site by giving you access to the types of functions you end up writing for all sites. It also gives modifications to the WordPress dashboard which make it easier to work with for your clients.
 Author: Mark Wilkinson
 Author URI: http://markwilkinson.me
-Version: 1.3.1
+Version: 1.4
 */
 
 /* define variable for path to this plugin file. */
@@ -28,16 +28,14 @@ if( ! class_exists( 'CMB_Meta_Box' ) )
 
 /**
  * deal with legacy code here
+ * load post type descriptions - filterable
+ * add the site options - filterable
  */
-
-/* load post type descriptions - filterable */
 if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
 	require_once dirname( __FILE__ ) . '/old/post-type-descriptions.php';
 
-/* add the site options - filterable */
 if( apply_filters( 'wpbasis_show_site_options', false ) == true )
 	require_once dirname( __FILE__ ) . '/old/site-options.php';
-	
 
 /***************************************************************
 * Function wpbasis_on_activation()
@@ -93,13 +91,14 @@ function wpbasis_enqueue_scripts() {
 
 	/* check whether the current admin page is wpbasis dashboard page */
 	if( $pagenow == 'admin.php' ) {
-
-		wp_enqueue_script( 'wpbasis_tabs', plugins_url( 'js/wpbasis-tabs.js', __FILE__ ), 'jquery' );
+	
+		/* site js scripts */
+		wp_enqueue_script( 'wpbasis_js', plugins_url( 'assets/js/wpbasis.js', __FILE__ ), 'jquery' );
+		
+		/* register the stylesheet */
+		wp_enqueue_style( 'wpbasis_admin_css', plugins_url( 'assets/css/wpbasis.css', __FILE__ ) );
 
 	}
-	
-	/* register the stylesheet */
-    wp_enqueue_style( 'wpbasis_admin_css', plugins_url( 'css/admin-style.css', __FILE__ ) );
 
 }
 

@@ -46,22 +46,6 @@ if( ! function_exists( 'wpbasis_dashboard_welcome_tab' ) ) { // make function pl
 add_action( 'wpbasis_dashboard_welcome_tab', 'wpbasis_dashboard_welcome_tab_content', 10 );
 
 /***************************************************************
-* Function wpbasis_site_options_intro()
-* Output intro text on the site options page
-* @hooked wpbasis_before_site_options_form
-***************************************************************/
-function wpbasis_site_options_intro() {
-	
-	/* output filterable intro text */
-	$wpbasis_site_options_intro = '<p>Below you can set some basic options for your site. Some of these options are used to display content on the front end, for example your telephone number may appear depending on your design.</p>';
-	
-	echo apply_filters( 'wpbasis_site_option_intro', $wpbasis_site_options_intro );
-	
-}
-
-add_action( 'wpbasis_before_site_options_form', 'wpbasis_site_options_intro', 10 );
-
-/***************************************************************
 * Function wpbasis_site_options_content()
 * Creates the output markup for the added site options page
 ***************************************************************/
@@ -102,9 +86,7 @@ function wpbasis_dashboard_about_text() {
 	</div>
 	
 	<div class="wpbasis-badge">
-		<a href="http://<?php echo wpbasis_get_wpbasis_domain_name(); ?>">
-			<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
-		</a>
+		<img src="<?php echo esc_url( apply_filters( 'wpbasis_version_logo', plugins_url( 'assets/images/logo.svg', dirname( __FILE__ ) ) ) ); ?>" alt="Logo" />
 		<?php printf( __( 'Version %s' ), $wp_version ); ?>
 	</div>
 	

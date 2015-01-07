@@ -15,7 +15,7 @@ function wpbasis_add_site_options() {
 			'edit_pages',
 			'wpbasis_site_options',
 			'wpbasis_site_options_content',
-			'div',
+			'dashicons-admin-generic',
 			99
 		);
 
@@ -238,3 +238,19 @@ function wpbasis_site_options_content() {
 	<?php
 
 }
+
+/***************************************************************
+* Function wpbasis_site_options_intro()
+* Output intro text on the site options page
+* @hooked wpbasis_before_site_options_form
+***************************************************************/
+function wpbasis_site_options_intro() {
+	
+	/* output filterable intro text */
+	$wpbasis_site_options_intro = '<p>Below you can set some basic options for your site. Some of these options are used to display content on the front end, for example your telephone number may appear depending on your design.</p>';
+	
+	echo apply_filters( 'wpbasis_site_option_intro', $wpbasis_site_options_intro );
+	
+}
+
+add_action( 'wpbasis_before_site_options_form', 'wpbasis_site_options_intro', 10 );
