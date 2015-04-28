@@ -67,6 +67,7 @@ function wpbasis_remove_admin_menus() {
 				'tools.php',
 				'options-general.php',
 				'edit-comments.php',
+				'plugins.php',
 			)
 		);
 

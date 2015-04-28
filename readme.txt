@@ -32,6 +32,7 @@ None so far!
 * Use SASS for the admin plugins css
 * Combine all admin JS into one file
 * Remove all unused code as a result of ditching some functions into legacy code
+* Remove plugins menu in multisite for non super users
 
 = 1.3.1 =
 * Move the meta boxes framework into the old folder. Should not be used in this plugin anymore, instead loaded as a mu-plugin.
