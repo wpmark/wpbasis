@@ -3,8 +3,8 @@ Contributors: wpmarkuk
 Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 1.4
+Tested up to: 4.2.1
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.4.1 =
+* Allow pages to be marked as contact page of this. A function then allows you to get the contact pages' ID
 
 = 1.4 =
 * Use SASS for the admin plugins css

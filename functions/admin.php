@@ -501,3 +501,85 @@ function wpbasis_update_nag() {
 }
 
 add_action( 'admin_notices', 'wpbasis_update_nag', 3 );
+
+/**
+ * function wpbasis_contact_page_checkbox()
+ * outputs the checkbox to mark a page as the contact page
+ */
+function wpbasis_contact_page_checkbox() {
+	
+	/* only do this for pages */
+	if( 'page' != get_post_type() ) {
+		return;
+	}
+	
+	/* add a nonce field so we can check for it later */
+	wp_nonce_field( 'wpbasis_contact_page_checkbox', 'wpbasis_contact_page_checkbox_nonce' );
+	
+	/* get the current contact page */
+	$current_contact_page = wpbasis_get_contact_page_id();
+	
+	?>
+	
+	<div class="misc-pub-section contact-page">
+		<input type="hidden" name="wpbasis_current_contact_page" value="<?php echo esc_attr( $current_contact_page ); ?>" />
+		<input type="checkbox" name="wpbasis_contact_page" value="1" <?php checked( 1, get_post_meta( $_GET[ 'post' ], '_wpbasis_contact_page', true ) ); ?> />
+		<label for="wpbasis_contact_page">Mark as Contact Page</label>
+	</div>
+	
+	<?php
+	
+}
+
+add_action( 'post_submitbox_misc_actions', 'wpbasis_contact_page_checkbox' );
+
+/**
+ * function wpbasis_contact_page_checkbox_save()
+ * saves the checkbox marking a page as the contact page
+ */
+function wpbasis_contact_page_checkbox_save( $post_id ) {
+	
+	/* only do this for pages */
+	if( 'page' != get_post_type( $post_id ) ) {
+		return;
+	}
+	
+	/* check if our nonce is se */
+	if ( ! isset( $_POST[ 'wpbasis_contact_page_checkbox_nonce' ] ) ) {
+		return;
+	}
+	
+	/* verify that the nonce is valid */
+	if ( ! wp_verify_nonce( $_POST[ 'wpbasis_contact_page_checkbox_nonce' ], 'wpbasis_contact_page_checkbox' ) ) {
+		return;
+	}
+	
+	/* if this is an autosave, our form has not been submitted, so we don't want to do anything */
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	
+	/* check the current user can edit this page */
+	if ( ! current_user_can( 'edit_page', $_GET[ 'post' ] ) ) {
+		return;
+	}
+	
+	/* check if a page is already set as the contact page */
+	if( $_POST[ 'wpbasis_current_contact_page' ] != 0 && isset( $_POST[ 'wpbasis_contact_page' ] ) ) {
+		
+		/* remove the post meta from the currently assigned page */
+		delete_post_meta( $_POST[ 'wpbasis_current_contact_page' ], '_wpbasis_contact_page' );
+		
+	}
+	
+	/* if the box has beeb ticked */
+	if( isset( $_POST[ 'wpbasis_contact_page' ] ) ) {
+		
+		/* update post meta with the contact page value */
+		update_post_meta( $post_id, '_wpbasis_contact_page', $_POST[ 'wpbasis_contact_page' ] );
+		
+	}
+	
+}
+
+add_action( 'save_post', 'wpbasis_contact_page_checkbox_save' );

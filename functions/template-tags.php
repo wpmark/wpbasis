@@ -349,3 +349,31 @@ function wpbasis_get_admin_footer_text() {
 	}
 		
 }
+
+/**
+ * function wpbasis_get_contact_page_id()
+ * gets the page id of the page marked as the contact page
+ */
+function wpbasis_get_contact_page_id() {
+	
+	/* query the pages for those marked with contact page meta */
+	$pages = get_posts(
+		array(
+			'post_type'		=> 'page',
+			'meta_key'		=> '_wpbasis_contact_page',
+			'meta_value'	=> '1',
+			'fields'		=> 'ids'
+		)
+	);
+	
+	/* shift the first item off the array - there should only be one */
+	$contact_page = array_shift( $pages );
+	
+	/* if we do not have a contact page */
+	if( empty( $contact_page ) ) {
+		return 0;
+	}
+	
+	return $contact_page;
+	
+}
