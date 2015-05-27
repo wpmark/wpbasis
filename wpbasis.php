@@ -5,11 +5,11 @@ Plugin URI: https://github.com/wpmark/wpbasis
 Description: WP Basis provides the basis of a WordPress site by giving you access to the types of functions you end up writing for all sites. It also gives modifications to the WordPress dashboard which make it easier to work with for your clients.
 Author: Mark Wilkinson
 Author URI: http://markwilkinson.me
-Version: 1.4.1
+Version: 1.4.2
 */
 
 /* define variable for path to this plugin file. */
-define( WPBASIS_LOCATION, dirname( __FILE__ ) );
+define( 'WPBASIS_LOCATION', dirname( __FILE__ ) );
 
 /***************************************************************
 * include the necessary functions file for the plugin
