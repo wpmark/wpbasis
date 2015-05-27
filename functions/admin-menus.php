@@ -19,6 +19,18 @@ function wpbasis_add_dashboard_home() {
 			1
 		);
 
+	} else {
+		
+		/* add the dashboard page with no menu items for wpbasis super users  */
+		add_submenu_page(
+			NULL,
+			'Dashboard',
+			'Dashboard',
+			'edit_posts',
+			'wpbasis_dashboard',
+			'wpbasis_dashboard'
+		);
+		
 	}
 
 }

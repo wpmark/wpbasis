@@ -190,23 +190,12 @@ add_filter( 'admin_footer_text', 'wpbasis_admin_footer_text' );
 ***************************************************************/
 function wpbasis_change_login_landing( $redirect_to, $request_redirect_to, $user ) {
 
-	/* if the current user is not a wpbasis super user */
-	if( ! wpbasis_is_wpbasis_user( $user->ID ) ) {
-
-		/* return the url of our new dashboard page */
-		return apply_filters( 'wpbasis_login_redirect', admin_url( 'admin.php?page=wpbasis_dashboard' ) );
-
-	/* if the current user is a pixel member */
-	} else {
-
-		/* return the normal admin url */
-		return apply_filters( 'wpbasis_super_user_login_redirect', admin_url() );
-
-	} // end if type of user
+	/* return the url of our new dashboard page */
+	return apply_filters( 'wpbasis_login_redirect', admin_url( 'admin.php?page=wpbasis_dashboard' ) );
 
 }
 
-add_filter( 'login_redirect', 'wpbasis_change_login_landing', 100, 3 );
+add_filter( 'login_redirect', 'wpbasis_change_login_landing', 20, 3 );
 
 /***************************************************************
 * Function wpbasis_login_logo()
