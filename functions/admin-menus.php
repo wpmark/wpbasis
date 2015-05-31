@@ -130,6 +130,13 @@ function wpbasis_remove_admin_sub_menus() {
 			remove_submenu_page( $wpbasis_remove_sub_menu_item[ 'parent'], $wpbasis_remove_sub_menu_item[ 'child' ] );	
 
 		} // end foreach item
+		
+		/**
+		 * hacky but removes the customize menu which we never want
+		 * using the conventional remove_subpage_menu seems not to work
+		 */
+		global $submenu;
+        unset( $submenu[ 'themes.php' ][ 6 ]);
 
 	} // end if wpbasis super user
 
