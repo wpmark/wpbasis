@@ -43,6 +43,14 @@ function pxlcore_admin_bar_edit() {
 	$wp_admin_bar->remove_menu( 'wpseo-menu' );
 	$wp_admin_bar->remove_menu( 'comments' );
 	$wp_admin_bar->remove_menu( 'new-content' );
+	
+	/* if the current user is not a wpbasis super user */
+	if( ! wpbasis_is_wpbasis_user() ) {
+
+		/* remove the updates admin bar item */
+		$wp_admin_bar->remove_menu( 'updates' );
+
+	}
 
 }
  

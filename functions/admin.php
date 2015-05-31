@@ -225,27 +225,6 @@ function wpbasis_login_logo() {
 add_action( 'login_head', 'wpbasis_login_logo' );
 
 /**
- * Function pxjn_alter_admin_bar()
- * Changes the admin bar for non pixel users.
- */
-function wpbasis_alter_admin_bar() {
-
-	/* if the current user is not a wpbasis super user */
-	if( ! wpbasis_is_wpbasis_user() ) {
-
-		/* load the admin bar global variable */
-		global $wp_admin_bar;
-
-		/* remove the updates admin bar item */
-		$wp_admin_bar->remove_menu( 'updates' );
-
-	}
-
-}
- 
-add_action( 'wp_before_admin_bar_render', 'wpbasis_alter_admin_bar', 0 );
-
-/**
  * Function wpbasis_remove_meta_boxes()
  * Removes unwanted metabox from the write post/page screens.
  */
