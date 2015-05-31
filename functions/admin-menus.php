@@ -108,15 +108,12 @@ function wpbasis_remove_admin_sub_menus() {
 
 		$wpbasis_remove_sub_menu_items = apply_filters( 'wpbasis_remove_admin_sub_menus',
 			array(
-				array(
+				'themes' => array(
 					'parent' => 'themes.php',
 					'child' => 'themes.php'
 				),
-				array(
-					'parent' => 'themes.php',
-					'child' => 'customize.php'
-				),
-				array(
+				/* remove theme editor - shouldn't be needed when theme mods are turned off in config */
+				'theme_editor' => array(
 					'parent' => 'themes.php',
 					'child' => 'theme-editor.php'
 				),
