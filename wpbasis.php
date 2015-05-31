@@ -6,6 +6,17 @@ Description: WP Basis provides the basis of a WordPress site by giving you acces
 Author: Mark Wilkinson
 Author URI: http://markwilkinson.me
 Version: 1.4.2
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
 */
 
 /* define variable for path to this plugin file. */
