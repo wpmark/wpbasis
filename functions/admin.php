@@ -48,7 +48,7 @@ add_action( 'personal_options', 'wpbasis_profile_field' );
 * Saves the information from the additional profile fields
 ***************************************************************/
 function wpbasis_save_pixel_profile_field( $user_id ) {
-
+	
 	/* check the current user is a super admin */
 	if ( ! current_user_can( 'manage_options', $user_id ) )
 		return false;
@@ -71,12 +71,17 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 	/* check we have an email domain added */
 	if( ! empty( $wpbasis_email_domain ) ) {
 		
-		/* get the email domain is a pixel one */
-		if( in_array( $wpbasis_user_email_domain, $wpbasis_email_domain ) ) {
+		/* if we have a wpbasis user posted */
+		if( isset( $_POST[ 'wpbasis_user' ] ) ) {
+			
+			/* get the email domain is a wpbasis one */
+			if( in_array( $wpbasis_user_email_domain, $wpbasis_email_domain ) ) {
+	
+				/* update the user meta with the additional fields on the profile page */
+				update_usermeta( $user_id, 'wpbasis_user', '1' );
 
-			/* update the user meta with the additional fields on the profile page */
-			update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );
-		
+			}
+			
 		/* the email domain does not match the users email domain */
 		} else {
 			
@@ -89,7 +94,7 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 	} else {
 		
 		/* update the user meta with the additional fields on the profile page */
-		update_usermeta( $user_id, 'wpbasis_user', $_POST[ 'wpbasis_user' ] );
+		update_usermeta( $user_id, 'wpbasis_user', 1 );
 		
 	}
 
