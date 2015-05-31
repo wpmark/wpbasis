@@ -344,19 +344,19 @@ function wpbasis_edit_user_capabilities( $caps ) {
 		$wpbasis_capabilities = apply_filters(
 			'wpbasis_user_capabilities',
 			array(
-				array(
+				'update_core' => array(
 					'capability_name' => 'update_core',
 					'capability_action' => false,
 				),
-				array(
+				'update_plugins' => array(
 					'capability_name' => 'update_plugins',
 					'capability_action' => false,
 				),
-				array(
+				'activate_plugins' => array(
 					'capability_name' => 'activate_plugins',
 					'capability_action' => false,
 				),
-				array(
+				'install_plugins' => array(
 					'capability_name' => 'install_plugins',
 					'capability_action' => false,
 				),
