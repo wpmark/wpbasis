@@ -19,6 +19,9 @@ GNU General Public License for more details.
 
 */
 
+/* exist if directly accessed */
+if( ! defined( 'ABSPATH' ) ) exit;
+
 /* define variable for path to this plugin file. */
 define( 'WPBASIS_LOCATION', dirname( __FILE__ ) );
 

@@ -15,24 +15,24 @@ function pxlcore_admin_bar_edit() {
 	if( is_admin() ) {
 
 		/* set link to home url */
-		$pxlcore_site_link = home_url();
-		$pxlcore_link_name = 'View Site';
+		$site_link = home_url();
+		$link_name = 'View Site';
 
 	/* if not in the admin */	
 	} else {
 
 		/* set link to admin url */
-		$pxlcore_site_link = admin_url( 'admin.php?page=wpbasis_dashboard' );
-		$pxlcore_link_name = 'Site Admin';
+		$site_link = admin_url( 'admin.php?page=wpbasis_dashboard' );
+		$link_name = 'Site Admin';
 
 	} // end check if admin
 
 	/* add a view site or admin link menu to the admin bar */
 	$wp_admin_bar->add_menu(
 		array(
-			'id' => 'pxlcore_new',
-			'title' => $pxlcore_link_name,
-			'href' => $pxlcore_site_link
+			'id' => 'site-admin-link',
+			'title' => $link_name,
+			'href' => $site_link
 		)
 	);
 
@@ -42,6 +42,7 @@ function pxlcore_admin_bar_edit() {
 	$wp_admin_bar->remove_menu( 'site-name' );
 	$wp_admin_bar->remove_menu( 'wpseo-menu' );
 	$wp_admin_bar->remove_menu( 'comments' );
+	$wp_admin_bar->remove_menu( 'new-content' );
 
 }
  
