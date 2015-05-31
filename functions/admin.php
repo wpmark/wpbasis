@@ -1,9 +1,9 @@
 <?php
-/***************************************************************
-* Function wpbasis_profile_field()
-* Adds additional field on the users profile page which makes
-* the user a wpbasis super user
-***************************************************************/
+/**
+ * Function wpbasis_profile_field()
+ * Adds additional field on the users profile page which makes
+ * the user a wpbasis super user
+ */
 function wpbasis_profile_field( $user ) {
 
 	/* bail out early if user is not an admin */
@@ -43,10 +43,10 @@ function wpbasis_profile_field( $user ) {
 
 add_action( 'personal_options', 'wpbasis_profile_field' );
 
-/***************************************************************
-* Function wpbasis_save_pixel_profile_field()
-* Saves the information from the additional profile fields
-***************************************************************/
+/**
+ * Function wpbasis_save_pixel_profile_field()
+ * Saves the information from the additional profile fields
+ */
 function wpbasis_save_pixel_profile_field( $user_id ) {
 	
 	/* check the current user is a super admin */
@@ -103,33 +103,12 @@ function wpbasis_save_pixel_profile_field( $user_id ) {
 add_action( 'personal_options_update', 'wpbasis_save_pixel_profile_field' );
 add_action( 'edit_user_profile_update', 'wpbasis_save_pixel_profile_field' );
 
-/***************************************************************
-* Function wpbasis_register_settings()
-* Register the settings for this plugin. Just a username and a
-* password for authenticating.
-***************************************************************/
+/**
+ * Function wpbasis_register_settings()
+ * Register the settings for this plugin. Just a username and a
+ * password for authenticating.
+ */
 function wpbasis_register_settings() {
-
-	/* create an array of the default settings, making it filterable */
-	$wpbasis_registered_site_option_settings = apply_filters(
-		'wpbasis_register_site_option_settings',
-		array(
-			'wpbasis_twitter_url' => 'wpbasis_twitter_url',
-			'wpbasis_facebook_url' => 'wpbasis_facebook_url',
-			'wpbasis_linkedin_url' =>'wpbasis_linkedin_url',
-			'wpbasis_contact_email' => 'wpbasis_contact_email',
-			'wpbasis_tel_no' => 'wpbasis_tel_no',
-			'wpbasis_footer_text' => 'wpbasis_footer_text'
-		)
-	);
-
-	/* loop through each setting to register */
-	foreach( $wpbasis_registered_site_option_settings as $key => $value ) {
-
-		/* register the setting */
-		register_setting( 'wpbasis_site_options', $value );
-
-	}
 	
 	/* create an array of the default settings, making it filterable */
 	$wpbasis_registered_plugin_settings = apply_filters(
@@ -152,10 +131,10 @@ function wpbasis_register_settings() {
 
 add_action( 'admin_init', 'wpbasis_register_settings' );
 
-/***************************************************************
-* Function wpbasis_howdy()
-* Change Howdy? in the admin bar
-***************************************************************/
+/**
+ * Function wpbasis_howdy()
+ * Change Howdy? in the admin bar
+ */
 function wpbasis_howdy() {
 
 	global $wp_admin_bar;
@@ -175,10 +154,10 @@ function wpbasis_howdy() {
 
 add_filter( 'admin_bar_menu', 'wpbasis_howdy', 10, 2 );
 
-/***************************************************************
-* Function wpbasis_admin_footer_text()
-* Change the display text in the wordpress dashboard footer
-***************************************************************/
+/**
+ * Function wpbasis_admin_footer_text()
+ * Change the display text in the wordpress dashboard footer
+ */
 function wpbasis_admin_footer_text () {
 
 	/* output this text, running through a filter first */
@@ -189,10 +168,10 @@ function wpbasis_admin_footer_text () {
 add_filter( 'admin_footer_text', 'wpbasis_admin_footer_text' );
 
 
-/***************************************************************
-* Function wpbasis_change_login_landing()
-* Changing the page users are redirected to after logging in.
-***************************************************************/
+/**
+ * Function wpbasis_change_login_landing()
+ * Changing the page users are redirected to after logging in.
+ */
 function wpbasis_change_login_landing( $redirect_to, $request_redirect_to, $user ) {
 
 	/* return the url of our new dashboard page */
@@ -202,11 +181,11 @@ function wpbasis_change_login_landing( $redirect_to, $request_redirect_to, $user
 
 add_filter( 'login_redirect', 'wpbasis_change_login_landing', 20, 3 );
 
-/***************************************************************
-* Function wpbasis_login_logo()
-* Adds a login logo from the theme folder if present, otherwise
-* falls back to the default
-***************************************************************/
+/**
+ * Function wpbasis_login_logo()
+ * Adds a login logo from the theme folder if present, otherwise
+ * falls back to the default
+ */
 function wpbasis_login_logo() {
 	
 	/* set the login logo path - filterable */
@@ -240,10 +219,10 @@ function wpbasis_login_logo() {
 
 add_action( 'login_head', 'wpbasis_login_logo' );
 
-/***************************************************************
-* Function pxjn_alter_admin_bar()
-* Changes the admin bar for non pixel users.
-***************************************************************/
+/**
+ * Function pxjn_alter_admin_bar()
+ * Changes the admin bar for non pixel users.
+ */
 function wpbasis_alter_admin_bar() {
 
 	/* if the current user is not a wpbasis super user */
@@ -261,16 +240,17 @@ function wpbasis_alter_admin_bar() {
  
 add_action( 'wp_before_admin_bar_render', 'wpbasis_alter_admin_bar', 0 );
 
-/***************************************************************
-* Function wpbasis_remove_meta_boxes()
-* Removes unwanted metabox from the write post/page screens.
-***************************************************************/
+/**
+ * Function wpbasis_remove_meta_boxes()
+ * Removes unwanted metabox from the write post/page screens.
+ */
 function wpbasis_remove_meta_boxes() {
 
 	/* if the current user is not a wpbasis super user */
 	if( ! wpbasis_is_wpbasis_user() ) {
 
-		$wpbasis_remove_metaboxes = apply_filters( 'wpbasis_remove_metaboxes',
+		$wpbasis_remove_metaboxes = apply_filters(
+			'wpbasis_remove_metaboxes',
 			array(
 				array(
 					'id' => 'postcustom',
@@ -301,11 +281,6 @@ function wpbasis_remove_meta_boxes() {
 					'id' => 'revisionsdiv',
 					'page' => 'post',
 					'context' => 'normal'
-				),
-				array(
-					'id' => 'tagsdiv-post_tag',
-					'page' => 'post',
-					'context' => 'side'
 				),
 				array(
 					'id' => 'authordiv',
@@ -364,10 +339,10 @@ function wpbasis_remove_meta_boxes() {
 
 add_action( 'do_meta_boxes', 'wpbasis_remove_meta_boxes');
 
-/***************************************************************
-* Function wpbasis_edit_user_capabilities()
-* Adds widgets and menus to editors.
-***************************************************************/
+/**
+ * Function wpbasis_edit_user_capabilities()
+ * Adds widgets and menus to editors.
+ */
 function wpbasis_edit_user_capabilities( $caps ) {
 
 	/* check if the user has the edit_pages capability */
@@ -426,10 +401,10 @@ function wpbasis_edit_user_capabilities( $caps ) {
 
 add_filter( 'user_has_cap', 'wpbasis_edit_user_capabilities' );
 
-/***************************************************************
-* Function wpbasis_remove_update_nag()
-* Removes the defauly wordpress update nag when core needs updating.
-***************************************************************/
+/**
+ * Function wpbasis_remove_update_nag()
+ * Removes the defauly wordpress update nag when core needs updating.
+ */
 function wpbasis_remove_update_nag() {
 	
 	/* remove the update nag */
@@ -439,15 +414,15 @@ function wpbasis_remove_update_nag() {
 
 add_action( 'admin_init', 'wpbasis_remove_update_nag' );
 
-/***************************************************************
-* Function wpbasis_update_nag()
-* Adds an update nag when there is a new core version available.
-* unique nag provided for no wpbasis users.
-***************************************************************/
+/**
+ * Function wpbasis_update_nag()
+ * Adds an update nag when there is a new core version available.
+ * unique nag provided for no wpbasis users.
+ */
 function wpbasis_update_nag() {
 	
 	/* if this is a multisite and the user does not have update core capabilities - bail */
-	if ( is_multisite() && !current_user_can('update_core') )
+	if ( is_multisite() && !current_user_can( 'update_core' ) )
 		return false;
 
 	global $pagenow;
