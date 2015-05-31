@@ -308,3 +308,39 @@ function wpbasis_get_contact_page_id() {
 	return $contact_page;
 	
 }
+
+/**
+ * function wpbasis_validate_email_domain
+ *
+ * checks a user email domains and matches it witht the wpbasis domain
+ * if the email domain matches we return true or false if not
+ */
+function wpbasis_validate_email_domain( $user_id ) {
+
+	/* get the current user object */
+	$current_user = wp_get_current_user();
+
+	/* get the current users email address */
+	$current_user_email = $current_user->user_email;
+
+	/* split email at the @ sign */
+	$email_parts = explode( '@', $current_user_email );
+	
+	/* get the domain part of the email */
+	$email_domain = $email_parts[1];
+	
+	/* get the email domain option */
+	$wpbasis_domain = wpbasis_get_wpbasis_domain_name();
+	
+	/* if the domain name id not wordpress.org */
+	if( $wpbasis_domain != 'wordpress.org' ) {
+		
+		/* check the email domain is a wpbasis domain name */
+		if( in_array( $email_domain, $wpbasis_domain ) ) {
+			return true;
+		}
+		
+	}
+	
+	return false;
+}

@@ -9,6 +9,11 @@ function wpbasis_profile_field( $user ) {
 	/* bail out early if user is not an admin */
 	if ( ! current_user_can( 'manage_options' ) )
 		return false;
+	
+	/* check the current users email domain name validates against wpbasis domain */
+	if( wpbasis_validate_email_domain( $user->ID ) == false ) {
+		return;
+	}
 
 	?>
 
@@ -25,7 +30,7 @@ function wpbasis_profile_field( $user ) {
 						<span>WP Basis Super User?</span>
 					</legend>
 					
-					<label>
+					<label for="wpbasis_user">
 						<input name="wpbasis_user" type="checkbox" id="wpbasis_user" value="1"<?php checked( get_user_meta( $user->ID, 'wpbasis_user', true ) ) ?> />
 						Choose whether this user is a WP Basis super user.
 					</label>
