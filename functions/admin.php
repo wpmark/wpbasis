@@ -252,72 +252,72 @@ function wpbasis_remove_meta_boxes() {
 		$wpbasis_remove_metaboxes = apply_filters(
 			'wpbasis_remove_metaboxes',
 			array(
-				array(
+				'post-postcustom' => array(
 					'id' => 'postcustom',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-commentsdiv' => array(
 					'id' => 'commentsdiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-commentstatusdiv' => array(
 					'id' => 'commentstatusdiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-slugdiv' => array(
 					'id' => 'slugdiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-trackbacksdiv' => array(
 					'id' => 'trackbacksdiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-revisionsdiv' => array(
 					'id' => 'revisionsdiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'post-authordiv' => array(
 					'id' => 'authordiv',
 					'page' => 'post',
 					'context' => 'normal'
 				),
-				array(
+				'page-postcustom' => array(
 					'id' => 'postcustom',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-commentsdiv' => array(
 					'id' => 'commentsdiv',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-trackbacksdiv' => array(
 					'id' => 'trackbacksdiv',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-revisionsdiv' => array(
 					'id' => 'revisionsdiv',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-commentstatusdiv' => array(
 					'id' => 'commentstatusdiv',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-authordiv' => array(
 					'id' => 'authordiv',
 					'page' => 'page',
 					'context' => 'normal'
 				),
-				array(
+				'page-slugdiv' => array(
 					'id' => 'slugdiv',
 					'page' => 'page',
 					'context' => 'normal'

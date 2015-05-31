@@ -25,9 +25,9 @@ if( ! defined( 'ABSPATH' ) ) exit;
 /* define variable for path to this plugin file. */
 define( 'WPBASIS_LOCATION', dirname( __FILE__ ) );
 
-/***************************************************************
-* include the necessary functions file for the plugin
-***************************************************************/
+/**
+ * include the necessary functions file for the plugin
+ */
 require_once dirname( __FILE__ ) . '/functions/template-tags.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus.php';
 require_once dirname( __FILE__ ) . '/functions/admin-menus-content.php';
@@ -35,11 +35,11 @@ require_once dirname( __FILE__ ) . '/functions/admin.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
 require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
 require_once dirname( __FILE__ ) . '/functions/admin-display.php';
-require_once dirname( __FILE__ ) . '/old/depreciated.php';
+require_once dirname( __FILE__ ) . '/depreciated/depreciated.php';
 
 /* load metaboxes if not already loaded - legacy code */
 if( ! class_exists( 'CMB_Meta_Box' ) )
-	require_once dirname( __FILE__ ) . '/old/metaboxes/custom-meta-boxes.php';
+	require_once dirname( __FILE__ ) . '/depreciated/metaboxes/custom-meta-boxes.php';
 
 /**
  * deal with legacy code here
@@ -47,16 +47,16 @@ if( ! class_exists( 'CMB_Meta_Box' ) )
  * add the site options - filterable
  */
 if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
-	require_once dirname( __FILE__ ) . '/old/post-type-descriptions.php';
+	require_once dirname( __FILE__ ) . '/depreciated/post-type-descriptions.php';
 
 if( apply_filters( 'wpbasis_show_site_options', false ) == true )
-	require_once dirname( __FILE__ ) . '/old/site-options.php';
+	require_once dirname( __FILE__ ) . '/depreciated/site-options.php';
 
-/***************************************************************
-* Function wpbasis_on_activation()
-* On plugin activation makes current user a wpbasis user and
-* sets an option to redirect the user to another page.
-***************************************************************/
+/**
+ * Function wpbasis_on_activation()
+ * On plugin activation makes current user a wpbasis user and
+ * sets an option to redirect the user to another page.
+ */
 function wpbasis_on_activation() {
 	
 	/* get the current users, user ID */
@@ -72,11 +72,11 @@ function wpbasis_on_activation() {
 
 register_activation_hook( __FILE__, 'wpbasis_on_activation' );
 
-/***************************************************************
-* Function wp_basis_activation_redirect()
-* Redirects user to the settings page for wp basis on plugin
-* activation.
-***************************************************************/
+/**
+ * Function wp_basis_activation_redirect()
+ * Redirects user to the settings page for wp basis on plugin
+ * activation.
+ */
 function wp_basis_activation_redirect() {
 	
 	/* check whether we should redirect the user or not based on the option set on activation */
@@ -95,10 +95,10 @@ function wp_basis_activation_redirect() {
 
 add_action( 'admin_init', 'wp_basis_activation_redirect' );
 
-/***************************************************************
-* Function wpbasis_enqueue_scripts()
-* Adds plugins scripts and styles
-***************************************************************/
+/**
+ * Function wpbasis_enqueue_scripts()
+ * Adds plugins scripts and styles
+ */
 function wpbasis_enqueue_scripts() {
 
 	/* load the global variable to see which admin page we are on */

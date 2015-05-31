@@ -1,8 +1,40 @@
 <?php
-/***************************************************************
-* Function wpbasis_add_site_options()
-* Adds a new menu item for the plugin settings.
-***************************************************************/
+/**
+ * function wpbasis_register_site_options
+ * register the option settings for the site options page
+ */
+function wpbasis_register_site_options() {
+	
+	/* create an array of the default settings, making it filterable */
+	$wpbasis_registered_site_option_settings = apply_filters(
+		'wpbasis_register_site_option_settings',
+		array(
+			'wpbasis_twitter_url' => 'wpbasis_twitter_url',
+			'wpbasis_facebook_url' => 'wpbasis_facebook_url',
+			'wpbasis_linkedin_url' =>'wpbasis_linkedin_url',
+			'wpbasis_contact_email' => 'wpbasis_contact_email',
+			'wpbasis_tel_no' => 'wpbasis_tel_no',
+			'wpbasis_footer_text' => 'wpbasis_footer_text'
+		)
+	);
+
+	/* loop through each setting to register */
+	foreach( $wpbasis_registered_site_option_settings as $key => $value ) {
+
+		/* register the setting */
+		register_setting( 'wpbasis_site_options', $value );
+
+	}
+	
+}
+
+/* hook function into admin_init */
+add_action( 'admin_init', 'wpbasis_register_site_options' );
+
+/**
+ * Function wpbasis_add_site_options()
+ * Adds a new menu item for the plugin settings.
+ */
 function wpbasis_add_site_options() {
 	
 	/* if the current user is not a wpbasis super user */
@@ -39,10 +71,10 @@ function wpbasis_add_site_options() {
 add_action( 'admin_menu', 'wpbasis_add_site_options' );
 
 
-/***************************************************************
-* Function wpbasis_site_options_content()
-* Creates the output markup for the added site options page
-***************************************************************/
+/**
+ * Function wpbasis_site_options_content()
+ * Creates the output markup for the added site options page
+ */
 function wpbasis_site_options_content() {
 
 	?>
@@ -53,9 +85,9 @@ function wpbasis_site_options_content() {
 		
 		<?php
 
-			/***************************************************************
-			* @hooked wpbasis_before_site_options_form
-			***************************************************************/
+			/**
+			 * @hooked wpbasis_before_site_options_form
+			 */
 			do_action( 'wpbasis_before_site_options_form' );
 
 		?>
@@ -226,9 +258,9 @@ function wpbasis_site_options_content() {
 		
 		<?php
 
-		/***************************************************************
-		* @hooked wpbasis_after_site_options_form
-		***************************************************************/
+		/**
+		 * @hooked wpbasis_after_site_options_form
+		 */
 		do_action( 'wpbasis_after_site_options_form' );
 
 		?>
@@ -239,11 +271,11 @@ function wpbasis_site_options_content() {
 
 }
 
-/***************************************************************
-* Function wpbasis_site_options_intro()
-* Output intro text on the site options page
-* @hooked wpbasis_before_site_options_form
-***************************************************************/
+/**
+ * Function wpbasis_site_options_intro()
+ * Output intro text on the site options page
+ * @hooked wpbasis_before_site_options_form
+ */
 function wpbasis_site_options_intro() {
 	
 	/* output filterable intro text */
