@@ -3,8 +3,8 @@ Contributors: wpmarkuk
 Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
-Tested up to: 4.2.1
-Stable tag: 1.4.2
+Tested up to: 4.2.2
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,15 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+= 1.5 =
+* Moved old functions into depreciated folder making use of _doing_it_wrong() to warn developers to choose alternative functions
+* Tided up some of the documentation on functions
+* Index referenced many of the filtered array to allow developers to more easily remove items added with filters
+* Only show the WP Basis Super User profile information when the users email domain matches that set in the WP Basis settings page
+* Removes the customize menu which as not working with previous code
+* Admin bar only now includes a show site/show admin link for none wpbasis users
+* Fix some notices with WP_DEBUG turned on
+* Login redirect now redirects without debugging errors. All users go to the wpbasis dashboard but the dashboard link in the admin menu always takes users to the appropriate dashboard home depending on whether they are a wpbasis user or not.
 
 = 1.4.2 =
 * Define constants correctly.

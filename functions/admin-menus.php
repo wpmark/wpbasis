@@ -106,7 +106,8 @@ function wpbasis_remove_admin_sub_menus() {
 	/* if the current user is not a wpbasis super user */
 	if( ! wpbasis_is_wpbasis_user() ) {
 
-		$wpbasis_remove_sub_menu_items = apply_filters( 'wpbasis_remove_admin_sub_menus',
+		$wpbasis_remove_sub_menu_items = apply_filters(
+			'wpbasis_remove_admin_sub_menus',
 			array(
 				'themes' => array(
 					'parent' => 'themes.php',
