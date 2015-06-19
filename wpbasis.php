@@ -5,7 +5,7 @@ Plugin URI: https://github.com/wpmark/wpbasis
 Description: WP Basis provides the basis of a WordPress site by giving you access to the types of functions you end up writing for all sites. It also gives modifications to the WordPress dashboard which make it easier to work with for your clients.
 Author: Mark Wilkinson
 Author URI: http://markwilkinson.me
-Version: 1.5
+Version: 1.6
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,33 +24,44 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 /* define variable for path to this plugin file. */
 define( 'WPBASIS_LOCATION', dirname( __FILE__ ) );
+define( 'WPBASIS_LOCATION_URL', plugins_url( '', __FILE__ ) );
 
 /**
  * include the necessary functions file for the plugin
  */
-require_once dirname( __FILE__ ) . '/functions/template-tags.php';
-require_once dirname( __FILE__ ) . '/functions/admin-menus.php';
-require_once dirname( __FILE__ ) . '/functions/admin-menus-content.php';
-require_once dirname( __FILE__ ) . '/functions/admin.php';
+require_once dirname( __FILE__ ) . '/functions/template-functions.php';
 require_once dirname( __FILE__ ) . '/functions/counters.php';
-require_once dirname( __FILE__ ) . '/functions/admin-bar.php';
-require_once dirname( __FILE__ ) . '/functions/admin-display.php';
-require_once dirname( __FILE__ ) . '/depreciated/depreciated.php';
+require_once dirname( __FILE__ ) . '/deprecated/deprecated.php';
 
-/* load metaboxes if not already loaded - legacy code */
-if( ! class_exists( 'CMB_Meta_Box' ) )
-	require_once dirname( __FILE__ ) . '/depreciated/metaboxes/custom-meta-boxes.php';
+/**
+ * include the admin functions 
+ */
+require_once dirname( __FILE__ ) . '/functions/admin/admin-profile.php';
+require_once dirname( __FILE__ ) . '/functions/admin/admin-menus.php';
+require_once dirname( __FILE__ ) . '/functions/admin/admin-menus-content.php';
+require_once dirname( __FILE__ ) . '/functions/admin/admin.php';
+require_once dirname( __FILE__ ) . '/functions/admin/admin-bar.php';
+require_once dirname( __FILE__ ) . '/functions/admin/admin-display.php';
+
+/**
+ * include the plugin defaults
+ */
+require_once dirname( __FILE__ ) . '/functions/defaults/default-tabs.php';
+require_once dirname( __FILE__ ) . '/functions/defaults/default-settings.php';
+require_once dirname( __FILE__ ) . '/functions/defaults/default-capabilities.php';
 
 /**
  * deal with legacy code here
  * load post type descriptions - filterable
  * add the site options - filterable
  */
-if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true )
-	require_once dirname( __FILE__ ) . '/depreciated/post-type-descriptions.php';
+if( apply_filters( 'wpbasis_use_post_type_descriptions', false ) == true ) {
+	require_once dirname( __FILE__ ) . '/deprecated/post-type-descriptions.php';
+}
 
-if( apply_filters( 'wpbasis_show_site_options', false ) == true )
-	require_once dirname( __FILE__ ) . '/depreciated/site-options.php';
+if( apply_filters( 'wpbasis_show_site_options', false ) == true ) {
+	require_once dirname( __FILE__ ) . '/deprecated/site-options.php';
+}
 
 /**
  * Function wpbasis_on_activation()
@@ -108,7 +119,7 @@ function wpbasis_enqueue_scripts() {
 	if( $pagenow == 'admin.php' ) {
 	
 		/* site js scripts */
-		wp_enqueue_script( 'wpbasis_js', plugins_url( 'assets/js/wpbasis.js', __FILE__ ), 'jquery' );
+		wp_enqueue_script( 'wpbasis_js', plugins_url( 'assets/js/wpbasis-min.js', __FILE__ ), 'jquery' );
 		
 		/* register the stylesheet */
 		wp_enqueue_style( 'wpbasis_admin_css', plugins_url( 'assets/css/wpbasis.css', __FILE__ ) );

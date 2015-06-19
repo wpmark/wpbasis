@@ -1,14 +1,4 @@
-/* layout styles for pxlcore
------------------------------------------------ */
-.col {
-	float: left;
-}
-.col-half {
-	width: 48%;
-	margin-right: 4%;
-}
-
-/* pxlcore dashboard styles
+/* wpbasis dashboard styles
 ----------------------------------------------- */
 .icon img {
 	margin: 0 auto;
@@ -23,10 +13,6 @@
 	right: 0;
 }
 .wpbasis-badge {
-	background-color: #F2F2F2;
-	color: #78c8e6;
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
-	box-shadow: 0 1px 3px rgba(0,0,0,.2);
 	font-size: 14px;
 	text-align: center;
 	font-weight: 600;
@@ -40,7 +26,7 @@
 	margin-bottom: 5px;
 }
 
-/* pxlcore tabs styles
+/* wpbasis tabs styles
 ----------------------------------------------- */
 ul.wpbasis-tabs {
 	border-bottom-color: #ccc;
@@ -77,8 +63,43 @@ ul.wpbasis-tabs li a.active {
 	background-color: #F1F1F1;
 }
 
+.update-content {
+	float: left;
+	width: 65%;
+	margin-right: 2%;
+}
+.update-quote {
+	float: right;
+	width: 25%;
+	margin-top: 2%;
+}
+.about-wrap .update-quote h3 {
+	padding: 8px 12px;
+	margin: 5px 0px;
+}
+
 /* general styles
 ----------------------------------------------- */
 .clearfix {
 	clear: both;
+}
+.wpbasis-message,
+.wpbasis-error,
+.wpbasis-warning {
+	display: block;
+	line-height: 19px;
+	padding: 1px 15px;
+	font-size: 14px;
+	text-align: left;
+	margin: 0px 20px 0 2px;
+	background-color: #fff;
+	border-left: 4px solid #ffba00;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.wpbasis-error {
+	border-color: #dd3d36;
+}
+.wpbasis-message {
+	border-color: #7ad03a;
 }

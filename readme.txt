@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,17 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.6 =
+* Tided up and documented a number of functions as well as compartmentalising functions into folders
+* Removed the wpbasis_var_dump() function - this is not a debugging plugin!
+* Removed previously included CMB library
+* Renamed template-tags.php to template-functions.php - they are functions not tags!
+* Add an updates tab to the WP Basis dashboard which indicates updates that are required.
+* Update the user capabilities removed by the plugin for none WP Basis users
+* Permissions for gravity forms for non wpbasis users. They can only read, edit and delete entries by default.
+* Remove widgets that are never used by default.
+
 = 1.5 =
 * Moved old functions into depreciated folder making use of _doing_it_wrong() to warn developers to choose alternative functions
 * Tided up some of the documentation on functions
