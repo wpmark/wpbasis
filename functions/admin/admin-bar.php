@@ -1,9 +1,9 @@
 <?php
 /**
- * Function pxlcore_admin_bar_edit()
+ * Function wpbasis_admin_bar_edit()
  * Amends the admin bar
  */
-function pxlcore_admin_bar_edit() {
+function wpbasis_admin_bar_edit() {
 
 	/* if the current user is a wpbasis super user */
 	if( wpbasis_is_wpbasis_user() )
@@ -31,30 +31,43 @@ function pxlcore_admin_bar_edit() {
 	$wp_admin_bar->add_menu(
 		array(
 			'id' => 'site-admin-link',
-			'title' => $link_name,
-			'href' => $site_link
+			'title' => apply_filters( 'wpbasis_admin_bar_site_admin_link_name', $link_name, get_current_user_id() ),
+			'href' => apply_filters( 'wpbasis_admin_bar_site_admin_link_url', $site_link, get_current_user_id() )
 		)
 	);
-
-	/* remove unwanted menu items */
-	$wp_admin_bar->remove_menu( 'my-sites' );
-	$wp_admin_bar->remove_menu( 'wp-logo' );
-	$wp_admin_bar->remove_menu( 'site-name' );
-	$wp_admin_bar->remove_menu( 'wpseo-menu' );
-	$wp_admin_bar->remove_menu( 'comments' );
-	$wp_admin_bar->remove_menu( 'new-content' );
 	
-	/* if the current user is not a wpbasis super user */
-	if( ! wpbasis_is_wpbasis_user() ) {
-
-		/* remove the updates admin bar item */
-		$wp_admin_bar->remove_menu( 'updates' );
-
+	/* create a filterable array of admin bar elements to remove */
+	$admin_bar_remove = apply_filters(
+		'wpbasis_admin_bar_elements',
+		array(
+			'my-sites',
+			'wp-logo',
+			'site-name',
+			'comments',
+			'new-content',
+			'abus_switch_to_user', // remove admin bar user switching element from the plugin
+			'wpseo-menu', // wordpress seo plugins menu item
+			'upgrades', // should not show anyway as cap removed
+		),
+		get_current_user_id()
+	);
+	
+	/* check we have elements to remove */
+	if( ! empty( $admin_bar_remove ) ) {
+		
+		/* loop through each element to remove */
+		foreach( $admin_bar_remove as $element ) {
+			
+			/* remove unwanted menu item */
+			$wp_admin_bar->remove_menu( $element );
+			
+		}
+		
 	}
 
 }
  
-add_action( 'wp_before_admin_bar_render', 'pxlcore_admin_bar_edit', 10 );
+add_action( 'wp_before_admin_bar_render', 'wpbasis_admin_bar_edit', 10 );
 
 /**
  * Function wpbasis_howdy()

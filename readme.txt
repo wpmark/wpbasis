@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,11 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.6.1 =
+* WP Basis super users get to see all widgets rather than only the ones not removed by the plugin.
+* Provides a filter for changing the admin bar links and titles.
+* Make admin bar elements removed filterable so they can be added back-in easier by developers for specific users.
 
 = 1.6 =
 * Tided up and documented a number of functions as well as compartmentalising functions into folders
