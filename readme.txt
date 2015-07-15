@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.6.2 =
+* Moves the admin bar toggle links from front end to admin to the front of the admin bar menu so that it is the first item in the list.
 
 = 1.6.1 =
 * WP Basis super users get to see all widgets rather than only the ones not removed by the plugin.
