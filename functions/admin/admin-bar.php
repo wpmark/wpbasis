@@ -50,6 +50,10 @@ add_action( 'wp_before_admin_bar_render', 'wpbasis_admin_remove_elements', 10 );
  */
 function wpbasis_admin_bar_site_toggle( &$wp_admin_bar ) {
 	
+	/* if the current user is a wpbasis super user */
+	if( wpbasis_is_wpbasis_user() )
+		return;
+	
 	/* only do this if in the admin */
 	if( is_admin() ) {
 
