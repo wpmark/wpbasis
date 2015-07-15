@@ -1,40 +1,15 @@
 <?php
 /**
- * Function wpbasis_admin_bar_edit()
+ * Function wpbasis_admin_remove_elements()
  * Amends the admin bar
  */
-function wpbasis_admin_bar_edit() {
+function wpbasis_admin_remove_elements() {
 
 	/* if the current user is a wpbasis super user */
 	if( wpbasis_is_wpbasis_user() )
 		return;		
 
 	global $wp_admin_bar;
-
-	/* only do this if in the admin */
-	if( is_admin() ) {
-
-		/* set link to home url */
-		$site_link = home_url();
-		$link_name = 'View Site';
-
-	/* if not in the admin */	
-	} else {
-
-		/* set link to admin url */
-		$site_link = admin_url( 'admin.php?page=wpbasis_dashboard' );
-		$link_name = 'Site Admin';
-
-	} // end check if admin
-
-	/* add a view site or admin link menu to the admin bar */
-	$wp_admin_bar->add_menu(
-		array(
-			'id' => 'site-admin-link',
-			'title' => apply_filters( 'wpbasis_admin_bar_site_admin_link_name', $link_name, get_current_user_id() ),
-			'href' => apply_filters( 'wpbasis_admin_bar_site_admin_link_url', $site_link, get_current_user_id() )
-		)
-	);
 	
 	/* create a filterable array of admin bar elements to remove */
 	$admin_bar_remove = apply_filters(
@@ -67,7 +42,42 @@ function wpbasis_admin_bar_edit() {
 
 }
  
-add_action( 'wp_before_admin_bar_render', 'wpbasis_admin_bar_edit', 10 );
+add_action( 'wp_before_admin_bar_render', 'wpbasis_admin_remove_elements', 10 );
+
+/**
+ * function wpbasis_admin_bar_site_toggle()
+ * adds an admin bar toggle for front/back end
+ */
+function wpbasis_admin_bar_site_toggle( &$wp_admin_bar ) {
+	
+	/* only do this if in the admin */
+	if( is_admin() ) {
+
+		/* set link to home url */
+		$site_link = home_url();
+		$link_name = 'View Site';
+
+	/* if not in the admin */	
+	} else {
+
+		/* set link to admin url */
+		$site_link = admin_url( 'admin.php?page=wpbasis_dashboard' );
+		$link_name = 'Site Admin';
+
+	} // end check if admin
+
+	/* add a view site or admin link menu to the admin bar */
+	$wp_admin_bar->add_menu(
+		array(
+			'id' => 'site-toggle',
+			'title' => apply_filters( 'wpbasis_admin_bar_site_admin_link_name', $link_name, get_current_user_id() ),
+			'href' => apply_filters( 'wpbasis_admin_bar_site_admin_link_url', $site_link, get_current_user_id() )
+		)
+	);
+
+}
+
+add_action( 'admin_bar_menu', 'wpbasis_admin_bar_site_toggle', 9);
 
 /**
  * Function wpbasis_howdy()
