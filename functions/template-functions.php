@@ -402,14 +402,12 @@ function wpbasis_get_core_updates_display() {
 	/* get current language */
 	$lang = get_option( 'WPLANG' );
 	
-	//echo '<pre>'; var_dump( $updates ); echo '</pre>';
-	
-	/* start output var */
+	/* start output and update message var */
 	$output = '';
+	$update_message = '';
 	
 	/* loop through each update */
 	foreach( $updates as $update ) {
-		
 		
 		/* check if current is not the the installed version */
 		if( $update->response == 'upgrade' && $update->locale == $lang ) {

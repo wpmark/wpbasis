@@ -45,6 +45,11 @@ function wpbasis_default_capabilities( $caps ) {
 		'action'	=> false,
 	);
 	
+	$caps[ 'edit_themes' ] = array(
+		'name'		=> 'edit_themes',
+		'action'	=> false,
+	);
+	
 	return $caps;
 	
 }
