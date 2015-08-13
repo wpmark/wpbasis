@@ -58,7 +58,7 @@ function wpbasis_before_updates_tab_content() {
 	
 	?>
 	
-	<p>Your site is built using the WordPress content management system. On top of that is other functionality added in the form of plugins. Periodically these are updated to improve performance and security. Any updates required at shown below.</p>
+	<p>Your site is built using the WordPress content management system. On top of that is other functionality added in the form of plugins. Periodically these are updated to improve performance and security. Any updates required are shown below.</p>
 	
 	<?Php
 	
