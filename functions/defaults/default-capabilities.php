@@ -45,6 +45,11 @@ function wpbasis_default_capabilities( $caps ) {
 		'action'	=> false,
 	);
 	
+	$caps[ 'edit_themes' ] = array(
+		'name'		=> 'edit_themes',
+		'action'	=> false,
+	);
+	
 	return $caps;
 	
 }
@@ -77,22 +82,31 @@ function wpmark_modify_gforms_capabilities( $caps ) {
 	    /* stop gravity forms adding the capabilities to this user */
 	    remove_filter( 'user_has_cap', array( 'RGForms', 'user_has_cap' ), 10, 3 );
 	    
-	    /* remove unwanted caps */
-        $caps['gform_full_access'] = false;
-
-        $caps['gravityforms_create_form'] = false;
-        $caps['gravityforms_delete_forms'] = false;
-        $caps['gravityforms_edit_forms'] = false;
-        $caps['gravityforms_edit_settings'] = false;
-        $caps['gravityforms_uninstall'] = false;
-        $caps['gravityforms_view_settings'] = false;
-        $caps['gravityforms_addon_browser'] = false;
-        $caps['gravityforms_view_updates'] = false;
-        $caps['gravityforms_view_entries'] = true;
-        $caps['gravityforms_edit_entries'] = true;
-        $caps['gravityforms_view_entry_notes'] = true;
-        $caps['gravityforms_edit_entry_notes'] = true;
-        $caps['gravityforms_delete_entries'] = true;
+	    /* build an array of gravity forms filters to amend */
+	    $gform_caps = apply_filters(
+	    	'wpbasis_gform_caps',
+	    	array(
+		    	'gform_full_access'				=> false,
+			    'gravityforms_create_form'		=> false,
+			    'gravityforms_delete_forms'		=> false,
+			    'gravityforms_edit_forms'		=> false,
+			    'gravityforms_edit_settings'	=> false,
+			    'gravityforms_uninstall'		=> false,
+			    'gravityforms_view_settings'	=> false,
+			    'gravityforms_addon_browser'	=> false,
+			    'gravityforms_view_updates'		=> false,
+			    'gravityforms_view_entries'		=> true,
+			    'gravityforms_edit_entries'		=> true,
+			    'gravityforms_view_entry_notes'	=> true,
+			    'gravityforms_edit_entry_notes'	=> true,
+			    'gravityforms_delete_entries'	=> true
+	    	)
+		);
+	    
+	    /* loop through array */
+	    foreach( $gform_caps as $cap_name => $cap_value ) {
+		    $caps[ $cap_name ] = $cap_value;
+	    }
         
     }
 	
