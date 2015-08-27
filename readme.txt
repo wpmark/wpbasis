@@ -31,6 +31,7 @@ None so far!
 = 1.6.3 =
 * Prevents a warning message appearing with WP_DEBUG set to true when there is a core upgrade available.
 * Prevent access to the theme-editor.php if you know the URL and you are not a super user.
+* Allow filtering of Gravity Forms capabilities
 
 = 1.6.2 =
 * Moves the admin bar toggle links from front end to admin to the front of the admin bar menu so that it is the first item in the list.
