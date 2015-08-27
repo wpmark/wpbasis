@@ -66,9 +66,7 @@ if( ! function_exists( 'wpbasis_dashboard_welcome_tab' ) ) { // make function pl
 			?>
 				
 			<h3><?php echo apply_filters( 'wpbasis_thanks_heading', 'Thank you for choosing ' . wpbasis_get_orgnisation_name() . '.' ); ?></h3>
-			<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo wpbasis_get_orgnisation_name(); ?> to build your website; we appreciate your business and have enjoyed working with you.</p>
-			
-			<p class="get-started">To get started with your site, use the links on the left to add and edit content and change your sites settings.</p>
+			<p class="wpbasis-thankyou-text">Thank you for choosing <?php echo wpbasis_get_orgnisation_name(); ?> to build your website, to get started with your site, use the links on the left to add and edit content and change your sites settings.</p>
 										
 			<?php
 	
