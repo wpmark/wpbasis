@@ -44,7 +44,7 @@ function wpbasis_default_plugin_settings( $settings ) {
 	$settings[ '' ] = array(
 		'setting_name' => 'wpbasis_organisation_name',
 		'setting_label' => 'Orgnisation Name',
-		'setting_description' => 'Enter the name of the orgnisation. This name is displayed in the WordPress admin as the site developer.',
+		'setting_description' => 'Enter the name of the organisation. This name is displayed in the WordPress admin as the site developer.',
 		'setting_type' => 'text',
 		'setting_class' => 'organisation-name',
 	);
