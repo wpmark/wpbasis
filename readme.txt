@@ -4,7 +4,7 @@ Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ To install the plugin:
 None so far!
 
 == Changelog ==
+
+= 1.6.4 =
+* Hotfix to correct a typo on the settings page - thanks to @mattradford for discovering.
 
 = 1.6.3 =
 * Prevents a warning message appearing with WP_DEBUG set to true when there is a core upgrade available.
