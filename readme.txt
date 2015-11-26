@@ -3,7 +3,7 @@ Contributors: wpmarkuk
 Donate link: http://markwilkinson.me/saythanks
 Tags: dashboard, utility, framework
 Requires at least: 3.9
-Tested up to: 4.2.2
+Tested up to: 4.4
 Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ WP Basis is a WordPress plugin that speeds up your WordPress development process
 
 == Description ==
 
-WP Basis is a WordPress plugin that speeds up your WordPress development process by providing functions we add to every site. It cleans up the dashboard for your clients users providing a simpler version of the WordPress dashboard. It also contains a number of functions, hooks and filters to allow you to amend things in the WordPress dashboard quickly and easily.
+WP Basis is a WordPress plugin that speeds up your WordPress development process by providing functions we add to every site. Primarily, it cleans up the dashboard for your clients users providing a simpler version of the WordPress dashboard and removing admin menus they never need. It also contains a number of functions, hooks and filters to allow you to amend things in the WordPress dashboard quickly and easily. It does all this whilst maintaining your ability to see everything as normal with no changes.
 
 == Installation ==
 
@@ -24,7 +24,19 @@ To install the plugin:
 
 == Frequently Asked Questions ==
 
-None so far!
+= What does this plugin actually do? =
+
+Put simply, the plugin alters the dashboard for users who you set as none WP Basis Super users. It gives them a more simplified dashboard home screen and removes many of the menus that are not needed for clients as they will only confuse them. The plugin also provides a number of templating functions that are useful on many sites.
+
+= Can I change the way the plugin behaves? =
+
+The plugin is built with extensibility in mind. In fact this was at the core of its build so that by using this plugin I could still do different things for different sites. Most functions etc. provide actions and filters so that you can change things. For example you can add back in admin menus you may need and add and remove or change the contents of the new dashboard page. Search the plugin code for `apply_filters` and `do_action` as these are your extensibility flags!
+
+== Screenshots ==
+
+1. The WP Basis settings screen. Here you set your domain name and organisation name.
+2. Add new WP Basis Super User checkbox appears on the profile screen for users who's email domain match that in the settings. With this box checked the admin changes do not take effect.
+3. None super users are given a new, more simplified dashboard home page with a number of menu items removed.
 
 == Changelog ==
 
